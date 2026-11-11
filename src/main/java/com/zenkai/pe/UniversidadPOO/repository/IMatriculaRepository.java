@@ -10,7 +10,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface IMatriculaRepository extends JpaRepository<Matricula, Long> {
+public interface IMatriculaRepository extends JpaRepository<Matricula, Integer> {
 
     @Query("""
     SELECT m FROM Matricula m

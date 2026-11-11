@@ -9,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -20,15 +21,15 @@ public class Matricula {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_matricula;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="id_alumno")
     private Alumno alumno;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="id_seccion")
     private Seccion seccion;
     @Enumerated(EnumType.STRING)
     private EstadoMatricula estado;
-    private double nota;
+    private Double nota;
     private String periodo;
 
     public Matricula(){}

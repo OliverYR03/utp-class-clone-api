@@ -17,6 +17,7 @@ import jakarta.persistence.Table;
 import java.time.LocalDate;
 import java.util.Date;
 
+
 @Entity
 @Table(name = "usuario")
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -32,16 +33,16 @@ public abstract class Usuario {
 
     @Enumerated(EnumType.STRING)
     private EstadoUsuario estado;
-    
+
     @Enumerated(EnumType.STRING)
     private RolUsuario rol;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String contrasena;
-
+    private String passwordHash;
     private char sexo;
 
-    @Column(name="fechaRegistro")
+    @Column(name = "fechaRegistro")
     private LocalDate fechaRegistro;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
@@ -161,10 +162,18 @@ public abstract class Usuario {
         this.cumpleanos = cumpleanos;
     }
 
-    public String getRol() {
-        return rol.toString();
+    public RolUsuario getRol() {
+        return rol;
     }
 
+    public String getPasswordHash() {
+        return passwordHash;
+    }
+
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
+    }
+     
     
     
 }

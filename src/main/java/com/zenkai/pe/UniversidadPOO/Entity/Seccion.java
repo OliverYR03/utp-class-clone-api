@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -23,11 +24,11 @@ public class Seccion {
     @JoinColumn(name="id_curso")
     private Curso curso;
     
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="id_aula")
     private Aula aula;
     
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="id_profesor")
     private Profesor profesor;
 

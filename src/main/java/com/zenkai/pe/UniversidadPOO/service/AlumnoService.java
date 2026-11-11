@@ -2,6 +2,7 @@ package com.zenkai.pe.UniversidadPOO.service;
 
 import com.zenkai.pe.UniversidadPOO.Entity.Alumno;
 import com.zenkai.pe.UniversidadPOO.Entity.Matricula;
+import com.zenkai.pe.UniversidadPOO.Entity.Seccion;
 import com.zenkai.pe.UniversidadPOO.enums.EstadoMatricula;
 import com.zenkai.pe.UniversidadPOO.repository.IAlumnoRepository;
 import java.util.List;
@@ -21,6 +22,11 @@ public class AlumnoService implements IAlumnoRepository {
     @Autowired
     private IAlumnoRepository ialumnoRepository;
 
+   /* @Override
+    public List<Seccion> findSecciones(int idAlumno) {
+        return ialumnoRepository.findSecciones(idAlumno);
+    }*/
+
     @Override
     public List<Matricula> findMatriculas(int idAlumno, EstadoMatricula estado, Sort sort) {
         return ialumnoRepository.findMatriculas(
@@ -29,48 +35,25 @@ public class AlumnoService implements IAlumnoRepository {
                 sort
         );
     }
-    
+
     @Override
     public List<Alumno> findAll() {
-        return ialumnoRepository.findAll(); 
+        return ialumnoRepository.findAll();
     }
 
     @Override
     public <S extends Alumno> S save(S entity) {
         return ialumnoRepository.save(entity);
     }
-    
-    
+
     @Override
-    public Optional<Alumno> findById(Long id) {
-        return ialumnoRepository.findById(id);
+    public Optional<Alumno> findByCodigo(String codigo) {
+        return ialumnoRepository.findByCodigo(codigo);
     }
-    
+
     /*---------------------------------------------------------*/
     @Override
     public void flush() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public Alumno getOne(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public Alumno getById(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public List<Alumno> findAllById(Iterable<Long> ids) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-
-
-    @Override
-    public boolean existsById(Long id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -80,17 +63,7 @@ public class AlumnoService implements IAlumnoRepository {
     }
 
     @Override
-    public void deleteById(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
     public void delete(Alumno entity) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void deleteAllById(Iterable<? extends Long> ids) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -150,17 +123,7 @@ public class AlumnoService implements IAlumnoRepository {
     }
 
     @Override
-    public void deleteAllByIdInBatch(Iterable<Long> ids) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
     public void deleteAllInBatch() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public Alumno getReferenceById(Long id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -184,8 +147,49 @@ public class AlumnoService implements IAlumnoRepository {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    
+    @Override
+    public void deleteAllByIdInBatch(Iterable<Integer> ids) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 
-    
+    @Override
+    public Alumno getOne(Integer id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Alumno getById(Integer id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Alumno getReferenceById(Integer id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List<Alumno> findAllById(Iterable<Integer> ids) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Optional<Alumno> findById(Integer id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean existsById(Integer id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void deleteAllById(Iterable<? extends Integer> ids) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 
 }
