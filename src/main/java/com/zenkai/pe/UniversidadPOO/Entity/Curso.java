@@ -17,7 +17,7 @@ public class Curso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_curso;
-    private String nombre, descripcion;
+    private String nombre, descripcion, modalidad, nivel;
     private int creditos, horas, ciclo;
     
     @ManyToMany
@@ -30,9 +30,11 @@ public class Curso {
 
     public Curso(){}
     
-    public Curso(String nombre, String descripcion, int creditos, int horas, int ciclo) {
+    public Curso(String nombre, String descripcion, String modalidad, String nivel, int creditos, int horas, int ciclo) {
         this.nombre = nombre;
         this.descripcion = descripcion;
+        this.modalidad = modalidad;
+        this.nivel = nivel;
         this.creditos = creditos;
         this.horas = horas;
         this.ciclo = ciclo;
@@ -46,6 +48,22 @@ public class Curso {
         this.id_curso = id_curso;
     }
 
+    public String getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(String nivel) {
+        this.nivel = nivel;
+    }
+
+    public String getModalidad() {
+        return modalidad;
+    }
+
+    public void setModalidad(String modalidad) {
+        this.modalidad = modalidad;
+    }
+    
     public String getNombre() {
         return nombre;
     }

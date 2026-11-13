@@ -35,8 +35,35 @@ public class Profesor extends Empleado {
 
 
     @Override
-    public double calcularSueldo() {
-        return 2;
+    public BigDecimal calcularSueldo() {
+        return null;
     }
+
+    @Override
+    public void iniciarTurno() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void terminarTurno() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public double getBonoCursos() {
+        return bonoCursos;
+    }
+
+    public void setBonoCursos(double bonoCursos) {
+        this.bonoCursos = bonoCursos;
+    }
+
+    public List<Curso> getCursos() {
+        return cursos;
+    }
+
+    public void setCursos(List<Curso> cursos) {
+        this.cursos = cursos;
+    }
+    
     
 }

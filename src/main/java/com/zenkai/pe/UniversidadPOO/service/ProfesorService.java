@@ -1,9 +1,12 @@
 package com.zenkai.pe.UniversidadPOO.service;
 
+import com.zenkai.pe.UniversidadPOO.Entity.Alumno;
 import com.zenkai.pe.UniversidadPOO.Entity.Profesor;
+import com.zenkai.pe.UniversidadPOO.Entity.Seccion;
 import com.zenkai.pe.UniversidadPOO.repository.IProfesorRepository;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.function.Function;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -23,6 +26,23 @@ public class ProfesorService implements IProfesorRepository {
     public List<Profesor> findAll() {
         return iprofesorRepository.findAll();
     }
+
+    @Override
+    public Set<Seccion> findSecciones(int idProfesor) {
+        return iprofesorRepository.findSecciones(idProfesor);
+    }
+
+    @Override
+    public Optional<Profesor> findByCodigo(String codigo) {
+        return iprofesorRepository.findByCodigo(codigo);
+    }
+
+    @Override
+    public Set<Alumno> findAlumnosBySeccion(int idSeccion, int idProfesor) {
+        return iprofesorRepository.findAlumnosBySeccion(idSeccion, idProfesor)    ;
+    }
+
+    /*          ----------------------------------------             */
     @Override
     public void flush() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -60,7 +80,7 @@ public class ProfesorService implements IProfesorRepository {
 
     @Override
     public Profesor getById(Long id) {
-       return iprofesorRepository.getById(id);
+        return iprofesorRepository.getById(id);
     }
 
     @Override
@@ -83,7 +103,6 @@ public class ProfesorService implements IProfesorRepository {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-
     @Override
     public List<Profesor> findAllById(Iterable<Long> ids) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -91,7 +110,7 @@ public class ProfesorService implements IProfesorRepository {
 
     @Override
     public <S extends Profesor> S save(S entity) {
-       return iprofesorRepository.save(entity);
+        return iprofesorRepository.save(entity);
     }
 
     @Override

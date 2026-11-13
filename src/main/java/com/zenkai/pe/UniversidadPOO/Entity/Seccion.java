@@ -18,7 +18,7 @@ public class Seccion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_seccion;
-    private String numero;
+    private String numero, turno, periodo;
     
     @OneToOne
     @JoinColumn(name="id_curso")
@@ -34,11 +34,13 @@ public class Seccion {
 
     public Seccion(){}
     
-    public Seccion(String numero, Curso curso, Aula aula, Profesor profesor) {
+    public Seccion(String numero, Curso curso, Aula aula, Profesor profesor, String turno, String periodo) {
         this.numero = numero;
         this.curso = curso;
         this.aula = aula;
         this.profesor = profesor;
+        this.turno = turno;
+        this.periodo = periodo;
     }
     
     
