@@ -65,5 +65,4 @@ public class Profesor extends Empleado {
         this.cursos = cursos;
     }
     
-    
 }
