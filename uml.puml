@@ -1,0 +1,685 @@
+@startuml
+abstract class com.zenkai.pe.UniversidadPOO.Entity.Empleado
+abstract class com.zenkai.pe.UniversidadPOO.Entity.Usuario
+annotation com.fasterxml.jackson.annotation.JsonBackReference
+annotation com.fasterxml.jackson.annotation.JsonFormat
+annotation com.fasterxml.jackson.annotation.JsonIgnore
+annotation com.fasterxml.jackson.annotation.JsonProperty
+annotation com.zenkai.pe.UniversidadPOO.rest.GetMapping
+annotation com.zenkai.pe.UniversidadPOO.rest.PathVariable
+annotation com.zenkai.pe.UniversidadPOO.rest.PostMapping
+annotation com.zenkai.pe.UniversidadPOO.rest.RequestBody
+annotation com.zenkai.pe.UniversidadPOO.rest.RequestMapping
+annotation com.zenkai.pe.UniversidadPOO.rest.RestController
+annotation jakarta.persistence.Column
+annotation jakarta.persistence.Entity
+annotation jakarta.persistence.Enumerated
+annotation jakarta.persistence.GeneratedValue
+annotation jakarta.persistence.Id
+annotation jakarta.persistence.Inheritance
+annotation jakarta.persistence.JoinColumn
+annotation jakarta.persistence.JoinTable
+annotation jakarta.persistence.ManyToMany
+annotation jakarta.persistence.ManyToOne
+annotation jakarta.persistence.OneToOne
+annotation jakarta.persistence.PrimaryKeyJoinColumn
+annotation jakarta.persistence.Table
+annotation java.lang.Override
+annotation lombok.AllArgsConstructor
+annotation lombok.Data
+annotation lombok.NoArgsConstructor
+annotation lombok.RequiredArgsConstructor
+annotation org.springframework.beans.factory.annotation.Autowired
+annotation org.springframework.beans.factory.annotation.Value
+annotation org.springframework.boot.autoconfigure.SpringBootApplication
+annotation org.springframework.context.annotation.Bean
+annotation org.springframework.context.annotation.Configuration
+annotation org.springframework.data.jpa.repository.Query
+annotation org.springframework.data.repository.query.Param
+annotation org.springframework.security.access.prepost.PreAuthorize
+annotation org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity
+annotation org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
+annotation org.springframework.stereotype.Component
+annotation org.springframework.stereotype.Repository
+annotation org.springframework.stereotype.Service
+annotation org.springframework.web.bind.annotation.DeleteMapping
+annotation org.springframework.web.bind.annotation.GetMapping
+annotation org.springframework.web.bind.annotation.PathVariable
+annotation org.springframework.web.bind.annotation.PostMapping
+annotation org.springframework.web.bind.annotation.PutMapping
+annotation org.springframework.web.bind.annotation.RequestBody
+annotation org.springframework.web.bind.annotation.RequestMapping
+annotation org.springframework.web.bind.annotation.RequestParam
+annotation org.springframework.web.bind.annotation.ResponseStatus
+annotation org.springframework.web.bind.annotation.RestController
+class com.zenkai.pe.UniversidadPOO.Entity.Administrador
+class com.zenkai.pe.UniversidadPOO.Entity.Alumno
+class com.zenkai.pe.UniversidadPOO.Entity.Aula
+class com.zenkai.pe.UniversidadPOO.Entity.Curso
+class com.zenkai.pe.UniversidadPOO.Entity.GenerarPassword
+class com.zenkai.pe.UniversidadPOO.Entity.Matricula
+class com.zenkai.pe.UniversidadPOO.Entity.Profesor
+class com.zenkai.pe.UniversidadPOO.Entity.Seccion
+class com.zenkai.pe.UniversidadPOO.Entity.SecurityUser
+class com.zenkai.pe.UniversidadPOO.Entity.Trabajador
+class com.zenkai.pe.UniversidadPOO.UniversidadPooApplication
+class com.zenkai.pe.UniversidadPOO.Utils.Comparador
+class com.zenkai.pe.UniversidadPOO.Utils.IteradorFiltroUsuarios
+class com.zenkai.pe.UniversidadPOO.Utils.Paginador
+class com.zenkai.pe.UniversidadPOO.config.SecurityConfig
+class com.zenkai.pe.UniversidadPOO.dto.AdministradorDTO
+class com.zenkai.pe.UniversidadPOO.dto.AlumnoDTO
+class com.zenkai.pe.UniversidadPOO.dto.EmpleadoDTO
+class com.zenkai.pe.UniversidadPOO.dto.LoginDTO
+class com.zenkai.pe.UniversidadPOO.dto.ProfesorDTO
+class com.zenkai.pe.UniversidadPOO.dto.UsuarioDTO
+class com.zenkai.pe.UniversidadPOO.exceptions.ResourceNotFoundException
+class com.zenkai.pe.UniversidadPOO.rest.AdministradorREST
+class com.zenkai.pe.UniversidadPOO.rest.AlumnoREST
+class com.zenkai.pe.UniversidadPOO.rest.AulaREST
+class com.zenkai.pe.UniversidadPOO.rest.AuthController
+class com.zenkai.pe.UniversidadPOO.rest.MatriculaREST
+class com.zenkai.pe.UniversidadPOO.rest.ProfesorREST
+class com.zenkai.pe.UniversidadPOO.rest.UsuarioREST
+class com.zenkai.pe.UniversidadPOO.security.CustomUserDetailsService
+class com.zenkai.pe.UniversidadPOO.security.JWTAuthResponseDTO
+class com.zenkai.pe.UniversidadPOO.security.JwtAuthenticationEntryPoint
+class com.zenkai.pe.UniversidadPOO.security.JwtAuthenticationFilter
+class com.zenkai.pe.UniversidadPOO.security.JwtTokenProvider
+class com.zenkai.pe.UniversidadPOO.service.AdministradorService
+class com.zenkai.pe.UniversidadPOO.service.AlumnoService
+class com.zenkai.pe.UniversidadPOO.service.AulaService
+class com.zenkai.pe.UniversidadPOO.service.MatriculaService
+class com.zenkai.pe.UniversidadPOO.service.ProfesorService
+class com.zenkai.pe.UniversidadPOO.service.UserDetailsServiceImpl
+class com.zenkai.pe.UniversidadPOO.service.UsuarioMapper
+class com.zenkai.pe.UniversidadPOO.service.UsuarioService
+class io.jsonwebtoken.Claims
+class io.jsonwebtoken.ExpiredJwtException
+class io.jsonwebtoken.Jwts
+class io.jsonwebtoken.MalformedJwtException
+class io.jsonwebtoken.SignatureException
+class io.jsonwebtoken.UnsupportedJwtException
+class io.jsonwebtoken.io.Decoders
+class io.jsonwebtoken.security.Keys
+class jakarta.persistence.EnumType
+class jakarta.persistence.GenerationType
+class jakarta.persistence.InheritanceType
+class jakarta.servlet.DispatcherType
+class jakarta.servlet.FilterChain
+class jakarta.servlet.ServletException
+class jakarta.servlet.http.HttpServletRequest
+class jakarta.servlet.http.HttpServletResponse
+class java.io.IOException
+class java.lang.RuntimeException
+class java.lang.Thread.State
+class java.math.BigDecimal
+class java.net.URI
+class java.time.LocalDate
+class java.util.ArrayList
+class java.util.Collection
+class java.util.Collections
+class java.util.Date
+class java.util.Iterator
+class java.util.List
+class java.util.Locale
+class java.util.Map
+class java.util.Optional
+class java.util.Set
+class java.util.function.Function
+class java.util.stream.Collectors
+class javax.crypto.SecretKey
+class org.springframework.boot.SpringApplication
+class org.springframework.data.domain.Example
+class org.springframework.data.domain.Page
+class org.springframework.data.domain.Pageable
+class org.springframework.data.domain.Sort
+class org.springframework.data.repository.query.FluentQuery
+class org.springframework.http.HttpMethod
+class org.springframework.http.HttpStatus
+class org.springframework.http.ResponseEntity
+class org.springframework.security.authentication.AuthenticationManager
+class org.springframework.security.authentication.BadCredentialsException
+class org.springframework.security.authentication.ProviderManager
+class org.springframework.security.authentication.UsernamePasswordAuthenticationToken
+class org.springframework.security.authentication.dao.DaoAuthenticationProvider
+class org.springframework.security.config.Customizer
+class org.springframework.security.config.annotation.web.builders.HttpSecurity
+class org.springframework.security.config.http.SessionCreationPolicy
+class org.springframework.security.core.Authentication
+class org.springframework.security.core.AuthenticationException
+class org.springframework.security.core.GrantedAuthority
+class org.springframework.security.core.authority.SimpleGrantedAuthority
+class org.springframework.security.core.context.SecurityContextHolder
+class org.springframework.security.core.userdetails.User
+class org.springframework.security.core.userdetails.UsernameNotFoundException
+class org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
+class org.springframework.security.crypto.password.PasswordEncoder
+class org.springframework.security.web.SecurityFilterChain
+class org.springframework.security.web.authentication.HttpStatusEntryPoint
+class org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
+class org.springframework.security.web.authentication.WebAuthenticationDetailsSource
+class org.springframework.util.StringUtils
+class org.springframework.web.cors.CorsConfiguration
+class org.springframework.web.cors.CorsConfigurationSource
+class org.springframework.web.cors.UrlBasedCorsConfigurationSource
+class org.springframework.web.filter.OncePerRequestFilter
+class org.springframework.web.server.ResponseStatusException
+enum com.zenkai.pe.UniversidadPOO.enums.CargoEmpleado
+enum com.zenkai.pe.UniversidadPOO.enums.CarreraAlumno
+enum com.zenkai.pe.UniversidadPOO.enums.EstadoMatricula
+enum com.zenkai.pe.UniversidadPOO.enums.EstadoUsuario
+enum com.zenkai.pe.UniversidadPOO.enums.ModalidadAlumno
+enum com.zenkai.pe.UniversidadPOO.enums.RolUsuario
+enum com.zenkai.pe.UniversidadPOO.enums.TipoAula
+interface com.zenkai.pe.UniversidadPOO.repository.IAdministradorRepository
+interface com.zenkai.pe.UniversidadPOO.repository.IAlumnoRepository
+interface com.zenkai.pe.UniversidadPOO.repository.IAulaRepository
+interface com.zenkai.pe.UniversidadPOO.repository.IMatriculaRepository
+interface com.zenkai.pe.UniversidadPOO.repository.IProfesorRepository
+interface com.zenkai.pe.UniversidadPOO.repository.IUsuarioRepository
+interface com.zenkai.pe.UniversidadPOO.repository.UserRepository
+interface java.util.Comparator
+interface org.springframework.data.jpa.repository.JpaRepository
+interface org.springframework.data.repository.CrudRepository
+interface org.springframework.security.core.userdetails.UserDetails
+interface org.springframework.security.core.userdetails.UserDetailsService
+interface org.springframework.security.web.AuthenticationEntryPoint
+com.zenkai.pe.UniversidadPOO.Entity.Empleado --|> com.zenkai.pe.UniversidadPOO.Entity.Usuario
+com.zenkai.pe.UniversidadPOO.Entity.Empleado ..> jakarta.persistence.Entity
+com.zenkai.pe.UniversidadPOO.Entity.Empleado ..> jakarta.persistence.Inheritance
+com.zenkai.pe.UniversidadPOO.Entity.Empleado ..> jakarta.persistence.PrimaryKeyJoinColumn
+com.zenkai.pe.UniversidadPOO.Entity.Empleado ..> jakarta.persistence.Table
+com.zenkai.pe.UniversidadPOO.Entity.Empleado ..> jakarta.persistence.InheritanceType
+com.zenkai.pe.UniversidadPOO.Entity.Empleado ..> java.math.BigDecimal
+com.zenkai.pe.UniversidadPOO.Entity.Empleado ..> java.util.Date
+com.zenkai.pe.UniversidadPOO.Entity.Empleado ..> com.zenkai.pe.UniversidadPOO.enums.EstadoUsuario
+com.zenkai.pe.UniversidadPOO.Entity.Empleado ..> com.zenkai.pe.UniversidadPOO.enums.RolUsuario
+com.zenkai.pe.UniversidadPOO.Entity.Usuario ..> com.fasterxml.jackson.annotation.JsonFormat
+com.zenkai.pe.UniversidadPOO.Entity.Usuario ..> com.fasterxml.jackson.annotation.JsonProperty
+com.zenkai.pe.UniversidadPOO.Entity.Usuario ..> jakarta.persistence.Column
+com.zenkai.pe.UniversidadPOO.Entity.Usuario ..> jakarta.persistence.Entity
+com.zenkai.pe.UniversidadPOO.Entity.Usuario ..> jakarta.persistence.Enumerated
+com.zenkai.pe.UniversidadPOO.Entity.Usuario ..> jakarta.persistence.GeneratedValue
+com.zenkai.pe.UniversidadPOO.Entity.Usuario ..> jakarta.persistence.Id
+com.zenkai.pe.UniversidadPOO.Entity.Usuario ..> jakarta.persistence.Inheritance
+com.zenkai.pe.UniversidadPOO.Entity.Usuario ..> jakarta.persistence.Table
+com.zenkai.pe.UniversidadPOO.Entity.Usuario ..> jakarta.persistence.EnumType
+com.zenkai.pe.UniversidadPOO.Entity.Usuario ..> jakarta.persistence.GenerationType
+com.zenkai.pe.UniversidadPOO.Entity.Usuario ..> jakarta.persistence.InheritanceType
+com.zenkai.pe.UniversidadPOO.Entity.Usuario ..> java.time.LocalDate
+com.zenkai.pe.UniversidadPOO.Entity.Usuario ..> java.util.Date
+com.zenkai.pe.UniversidadPOO.Entity.Usuario ..> com.zenkai.pe.UniversidadPOO.enums.EstadoUsuario
+com.zenkai.pe.UniversidadPOO.Entity.Usuario ..> com.zenkai.pe.UniversidadPOO.enums.RolUsuario
+com.zenkai.pe.UniversidadPOO.Entity.Administrador --|> com.zenkai.pe.UniversidadPOO.Entity.Empleado
+com.zenkai.pe.UniversidadPOO.Entity.Administrador ..> jakarta.persistence.Column
+com.zenkai.pe.UniversidadPOO.Entity.Administrador ..> jakarta.persistence.Entity
+com.zenkai.pe.UniversidadPOO.Entity.Administrador ..> jakarta.persistence.PrimaryKeyJoinColumn
+com.zenkai.pe.UniversidadPOO.Entity.Administrador ..> jakarta.persistence.Table
+com.zenkai.pe.UniversidadPOO.Entity.Administrador ..> java.lang.Override
+com.zenkai.pe.UniversidadPOO.Entity.Administrador ..> java.math.BigDecimal
+com.zenkai.pe.UniversidadPOO.Entity.Administrador ..> java.util.Date
+com.zenkai.pe.UniversidadPOO.Entity.Administrador ..> com.zenkai.pe.UniversidadPOO.enums.RolUsuario
+com.zenkai.pe.UniversidadPOO.Entity.Alumno --|> com.zenkai.pe.UniversidadPOO.Entity.Usuario
+com.zenkai.pe.UniversidadPOO.Entity.Alumno ..> jakarta.persistence.Entity
+com.zenkai.pe.UniversidadPOO.Entity.Alumno ..> jakarta.persistence.Enumerated
+com.zenkai.pe.UniversidadPOO.Entity.Alumno ..> jakarta.persistence.PrimaryKeyJoinColumn
+com.zenkai.pe.UniversidadPOO.Entity.Alumno ..> jakarta.persistence.Table
+com.zenkai.pe.UniversidadPOO.Entity.Alumno ..> jakarta.persistence.EnumType
+com.zenkai.pe.UniversidadPOO.Entity.Alumno ..> java.time.LocalDate
+com.zenkai.pe.UniversidadPOO.Entity.Alumno ..> java.util.Date
+com.zenkai.pe.UniversidadPOO.Entity.Aula ..> jakarta.persistence.Column
+com.zenkai.pe.UniversidadPOO.Entity.Aula ..> jakarta.persistence.Entity
+com.zenkai.pe.UniversidadPOO.Entity.Aula ..> jakarta.persistence.Enumerated
+com.zenkai.pe.UniversidadPOO.Entity.Aula ..> jakarta.persistence.GeneratedValue
+com.zenkai.pe.UniversidadPOO.Entity.Aula ..> jakarta.persistence.Id
+com.zenkai.pe.UniversidadPOO.Entity.Aula ..> jakarta.persistence.Table
+com.zenkai.pe.UniversidadPOO.Entity.Aula ..> jakarta.persistence.EnumType
+com.zenkai.pe.UniversidadPOO.Entity.Aula ..> jakarta.persistence.GenerationType
+com.zenkai.pe.UniversidadPOO.Entity.Aula ..> com.zenkai.pe.UniversidadPOO.enums.TipoAula
+com.zenkai.pe.UniversidadPOO.Entity.Curso ..> jakarta.persistence.Entity
+com.zenkai.pe.UniversidadPOO.Entity.Curso ..> jakarta.persistence.GeneratedValue
+com.zenkai.pe.UniversidadPOO.Entity.Curso ..> jakarta.persistence.Id
+com.zenkai.pe.UniversidadPOO.Entity.Curso ..> jakarta.persistence.JoinColumn
+com.zenkai.pe.UniversidadPOO.Entity.Curso ..> jakarta.persistence.JoinTable
+com.zenkai.pe.UniversidadPOO.Entity.Curso ..> jakarta.persistence.ManyToMany
+com.zenkai.pe.UniversidadPOO.Entity.Curso ..> jakarta.persistence.Table
+com.zenkai.pe.UniversidadPOO.Entity.Curso ..> jakarta.persistence.GenerationType
+com.zenkai.pe.UniversidadPOO.Entity.Curso ..> java.util.List
+com.zenkai.pe.UniversidadPOO.Entity.GenerarPassword ..> org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
+com.zenkai.pe.UniversidadPOO.Entity.Matricula ..> jakarta.persistence.Entity
+com.zenkai.pe.UniversidadPOO.Entity.Matricula ..> jakarta.persistence.Enumerated
+com.zenkai.pe.UniversidadPOO.Entity.Matricula ..> jakarta.persistence.GeneratedValue
+com.zenkai.pe.UniversidadPOO.Entity.Matricula ..> jakarta.persistence.Id
+com.zenkai.pe.UniversidadPOO.Entity.Matricula ..> jakarta.persistence.JoinColumn
+com.zenkai.pe.UniversidadPOO.Entity.Matricula ..> jakarta.persistence.ManyToOne
+com.zenkai.pe.UniversidadPOO.Entity.Matricula ..> jakarta.persistence.OneToOne
+com.zenkai.pe.UniversidadPOO.Entity.Matricula ..> jakarta.persistence.Table
+com.zenkai.pe.UniversidadPOO.Entity.Matricula ..> lombok.Data
+com.zenkai.pe.UniversidadPOO.Entity.Matricula ..> jakarta.persistence.EnumType
+com.zenkai.pe.UniversidadPOO.Entity.Matricula ..> jakarta.persistence.GenerationType
+com.zenkai.pe.UniversidadPOO.Entity.Matricula ..> com.zenkai.pe.UniversidadPOO.enums.EstadoMatricula
+com.zenkai.pe.UniversidadPOO.Entity.Profesor --|> com.zenkai.pe.UniversidadPOO.Entity.Empleado
+com.zenkai.pe.UniversidadPOO.Entity.Profesor ..> com.fasterxml.jackson.annotation.JsonBackReference
+com.zenkai.pe.UniversidadPOO.Entity.Profesor ..> com.fasterxml.jackson.annotation.JsonIgnore
+com.zenkai.pe.UniversidadPOO.Entity.Profesor ..> jakarta.persistence.Column
+com.zenkai.pe.UniversidadPOO.Entity.Profesor ..> jakarta.persistence.Entity
+com.zenkai.pe.UniversidadPOO.Entity.Profesor ..> jakarta.persistence.ManyToMany
+com.zenkai.pe.UniversidadPOO.Entity.Profesor ..> jakarta.persistence.PrimaryKeyJoinColumn
+com.zenkai.pe.UniversidadPOO.Entity.Profesor ..> jakarta.persistence.Table
+com.zenkai.pe.UniversidadPOO.Entity.Profesor ..> java.lang.Override
+com.zenkai.pe.UniversidadPOO.Entity.Profesor ..> java.math.BigDecimal
+com.zenkai.pe.UniversidadPOO.Entity.Profesor ..> java.util.Date
+com.zenkai.pe.UniversidadPOO.Entity.Profesor ..> java.util.List
+com.zenkai.pe.UniversidadPOO.Entity.Profesor ..> com.zenkai.pe.UniversidadPOO.enums.RolUsuario
+com.zenkai.pe.UniversidadPOO.Entity.Seccion ..> jakarta.persistence.Entity
+com.zenkai.pe.UniversidadPOO.Entity.Seccion ..> jakarta.persistence.GeneratedValue
+com.zenkai.pe.UniversidadPOO.Entity.Seccion ..> jakarta.persistence.Id
+com.zenkai.pe.UniversidadPOO.Entity.Seccion ..> jakarta.persistence.JoinColumn
+com.zenkai.pe.UniversidadPOO.Entity.Seccion ..> jakarta.persistence.ManyToOne
+com.zenkai.pe.UniversidadPOO.Entity.Seccion ..> jakarta.persistence.OneToOne
+com.zenkai.pe.UniversidadPOO.Entity.Seccion ..> jakarta.persistence.Table
+com.zenkai.pe.UniversidadPOO.Entity.Seccion ..> lombok.Data
+com.zenkai.pe.UniversidadPOO.Entity.Seccion ..> jakarta.persistence.GenerationType
+com.zenkai.pe.UniversidadPOO.Entity.SecurityUser ..> java.lang.Override
+com.zenkai.pe.UniversidadPOO.Entity.SecurityUser ..> java.util.Collection
+com.zenkai.pe.UniversidadPOO.Entity.SecurityUser ..> java.util.Collections
+com.zenkai.pe.UniversidadPOO.Entity.SecurityUser ..> org.springframework.security.core.GrantedAuthority
+com.zenkai.pe.UniversidadPOO.Entity.SecurityUser ..> org.springframework.security.core.authority.SimpleGrantedAuthority
+com.zenkai.pe.UniversidadPOO.Entity.SecurityUser --|> org.springframework.security.core.userdetails.UserDetails
+com.zenkai.pe.UniversidadPOO.Entity.Trabajador --|> com.zenkai.pe.UniversidadPOO.Entity.Empleado
+com.zenkai.pe.UniversidadPOO.Entity.Trabajador ..> jakarta.persistence.Entity
+com.zenkai.pe.UniversidadPOO.Entity.Trabajador ..> jakarta.persistence.Enumerated
+com.zenkai.pe.UniversidadPOO.Entity.Trabajador ..> jakarta.persistence.Table
+com.zenkai.pe.UniversidadPOO.Entity.Trabajador ..> java.lang.Override
+com.zenkai.pe.UniversidadPOO.Entity.Trabajador ..> lombok.AllArgsConstructor
+com.zenkai.pe.UniversidadPOO.Entity.Trabajador ..> lombok.NoArgsConstructor
+com.zenkai.pe.UniversidadPOO.Entity.Trabajador ..> jakarta.persistence.EnumType
+com.zenkai.pe.UniversidadPOO.Entity.Trabajador ..> java.math.BigDecimal
+com.zenkai.pe.UniversidadPOO.Entity.Trabajador ..> com.zenkai.pe.UniversidadPOO.enums.CargoEmpleado
+com.zenkai.pe.UniversidadPOO.UniversidadPooApplication ..> org.springframework.boot.autoconfigure.SpringBootApplication
+com.zenkai.pe.UniversidadPOO.UniversidadPooApplication ..> org.springframework.boot.SpringApplication
+com.zenkai.pe.UniversidadPOO.Utils.Comparador ..> java.lang.Override
+com.zenkai.pe.UniversidadPOO.Utils.Comparador ..> java.util.function.Function
+com.zenkai.pe.UniversidadPOO.Utils.Comparador --|> java.util.Comparator
+com.zenkai.pe.UniversidadPOO.Utils.IteradorFiltroUsuarios ..> com.zenkai.pe.UniversidadPOO.dto.UsuarioDTO
+com.zenkai.pe.UniversidadPOO.Utils.IteradorFiltroUsuarios ..> java.util.ArrayList
+com.zenkai.pe.UniversidadPOO.Utils.IteradorFiltroUsuarios ..> java.util.Iterator
+com.zenkai.pe.UniversidadPOO.Utils.IteradorFiltroUsuarios ..> java.util.List
+com.zenkai.pe.UniversidadPOO.Utils.IteradorFiltroUsuarios ..> java.util.Locale
+com.zenkai.pe.UniversidadPOO.Utils.Paginador ..> java.util.ArrayList
+com.zenkai.pe.UniversidadPOO.Utils.Paginador ..> java.util.List
+com.zenkai.pe.UniversidadPOO.config.SecurityConfig ..> org.springframework.beans.factory.annotation.Autowired
+com.zenkai.pe.UniversidadPOO.config.SecurityConfig ..> org.springframework.context.annotation.Bean
+com.zenkai.pe.UniversidadPOO.config.SecurityConfig ..> org.springframework.context.annotation.Configuration
+com.zenkai.pe.UniversidadPOO.config.SecurityConfig ..> org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity
+com.zenkai.pe.UniversidadPOO.config.SecurityConfig ..> org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
+com.zenkai.pe.UniversidadPOO.config.SecurityConfig ..> com.zenkai.pe.UniversidadPOO.security.JwtAuthenticationEntryPoint
+com.zenkai.pe.UniversidadPOO.config.SecurityConfig ..> com.zenkai.pe.UniversidadPOO.security.JwtAuthenticationFilter
+com.zenkai.pe.UniversidadPOO.config.SecurityConfig ..> com.zenkai.pe.UniversidadPOO.service.UserDetailsServiceImpl
+com.zenkai.pe.UniversidadPOO.config.SecurityConfig ..> jakarta.servlet.DispatcherType
+com.zenkai.pe.UniversidadPOO.config.SecurityConfig ..> jakarta.servlet.http.HttpServletResponse
+com.zenkai.pe.UniversidadPOO.config.SecurityConfig ..> java.util.List
+com.zenkai.pe.UniversidadPOO.config.SecurityConfig ..> org.springframework.http.HttpMethod
+com.zenkai.pe.UniversidadPOO.config.SecurityConfig ..> org.springframework.http.HttpStatus
+com.zenkai.pe.UniversidadPOO.config.SecurityConfig ..> org.springframework.security.authentication.AuthenticationManager
+com.zenkai.pe.UniversidadPOO.config.SecurityConfig ..> org.springframework.security.authentication.ProviderManager
+com.zenkai.pe.UniversidadPOO.config.SecurityConfig ..> org.springframework.security.authentication.dao.DaoAuthenticationProvider
+com.zenkai.pe.UniversidadPOO.config.SecurityConfig ..> org.springframework.security.config.Customizer
+com.zenkai.pe.UniversidadPOO.config.SecurityConfig ..> org.springframework.security.config.annotation.web.builders.HttpSecurity
+com.zenkai.pe.UniversidadPOO.config.SecurityConfig ..> org.springframework.security.config.http.SessionCreationPolicy
+com.zenkai.pe.UniversidadPOO.config.SecurityConfig ..> org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
+com.zenkai.pe.UniversidadPOO.config.SecurityConfig ..> org.springframework.security.crypto.password.PasswordEncoder
+com.zenkai.pe.UniversidadPOO.config.SecurityConfig ..> org.springframework.security.web.SecurityFilterChain
+com.zenkai.pe.UniversidadPOO.config.SecurityConfig ..> org.springframework.security.web.authentication.HttpStatusEntryPoint
+com.zenkai.pe.UniversidadPOO.config.SecurityConfig ..> org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
+com.zenkai.pe.UniversidadPOO.config.SecurityConfig ..> org.springframework.web.cors.CorsConfiguration
+com.zenkai.pe.UniversidadPOO.config.SecurityConfig ..> org.springframework.web.cors.CorsConfigurationSource
+com.zenkai.pe.UniversidadPOO.config.SecurityConfig ..> org.springframework.web.cors.UrlBasedCorsConfigurationSource
+com.zenkai.pe.UniversidadPOO.dto.AdministradorDTO --|> com.zenkai.pe.UniversidadPOO.dto.EmpleadoDTO
+com.zenkai.pe.UniversidadPOO.dto.AdministradorDTO ..> java.math.BigDecimal
+com.zenkai.pe.UniversidadPOO.dto.AlumnoDTO ..> jakarta.persistence.Enumerated
+com.zenkai.pe.UniversidadPOO.dto.AlumnoDTO --|> com.zenkai.pe.UniversidadPOO.dto.UsuarioDTO
+com.zenkai.pe.UniversidadPOO.dto.AlumnoDTO ..> jakarta.persistence.EnumType
+com.zenkai.pe.UniversidadPOO.dto.AlumnoDTO ..> com.zenkai.pe.UniversidadPOO.enums.CarreraAlumno
+com.zenkai.pe.UniversidadPOO.dto.AlumnoDTO ..> com.zenkai.pe.UniversidadPOO.enums.EstadoUsuario
+com.zenkai.pe.UniversidadPOO.dto.AlumnoDTO ..> com.zenkai.pe.UniversidadPOO.enums.ModalidadAlumno
+com.zenkai.pe.UniversidadPOO.dto.AlumnoDTO ..> com.zenkai.pe.UniversidadPOO.enums.RolUsuario
+com.zenkai.pe.UniversidadPOO.dto.EmpleadoDTO --|> com.zenkai.pe.UniversidadPOO.dto.UsuarioDTO
+com.zenkai.pe.UniversidadPOO.dto.EmpleadoDTO ..> java.math.BigDecimal
+com.zenkai.pe.UniversidadPOO.dto.ProfesorDTO ..> com.zenkai.pe.UniversidadPOO.Entity.Curso
+com.zenkai.pe.UniversidadPOO.dto.ProfesorDTO --|> com.zenkai.pe.UniversidadPOO.dto.EmpleadoDTO
+com.zenkai.pe.UniversidadPOO.dto.ProfesorDTO ..> java.util.List
+com.zenkai.pe.UniversidadPOO.dto.UsuarioDTO ..> com.fasterxml.jackson.annotation.JsonFormat
+com.zenkai.pe.UniversidadPOO.dto.UsuarioDTO ..> jakarta.persistence.Enumerated
+com.zenkai.pe.UniversidadPOO.dto.UsuarioDTO ..> lombok.Data
+com.zenkai.pe.UniversidadPOO.dto.UsuarioDTO ..> jakarta.persistence.EnumType
+com.zenkai.pe.UniversidadPOO.dto.UsuarioDTO ..> java.time.LocalDate
+com.zenkai.pe.UniversidadPOO.dto.UsuarioDTO ..> java.util.Date
+com.zenkai.pe.UniversidadPOO.dto.UsuarioDTO ..> com.zenkai.pe.UniversidadPOO.enums.EstadoUsuario
+com.zenkai.pe.UniversidadPOO.dto.UsuarioDTO ..> com.zenkai.pe.UniversidadPOO.enums.RolUsuario
+com.zenkai.pe.UniversidadPOO.exceptions.ResourceNotFoundException ..> lombok.Data
+com.zenkai.pe.UniversidadPOO.exceptions.ResourceNotFoundException ..> org.springframework.web.bind.annotation.ResponseStatus
+com.zenkai.pe.UniversidadPOO.exceptions.ResourceNotFoundException --|> java.lang.RuntimeException
+com.zenkai.pe.UniversidadPOO.exceptions.ResourceNotFoundException ..> org.springframework.http.HttpStatus
+com.zenkai.pe.UniversidadPOO.rest.AdministradorREST ..> org.springframework.beans.factory.annotation.Autowired
+com.zenkai.pe.UniversidadPOO.rest.AdministradorREST ..> org.springframework.security.access.prepost.PreAuthorize
+com.zenkai.pe.UniversidadPOO.rest.AdministradorREST ..> org.springframework.web.bind.annotation.DeleteMapping
+com.zenkai.pe.UniversidadPOO.rest.AdministradorREST ..> org.springframework.web.bind.annotation.GetMapping
+com.zenkai.pe.UniversidadPOO.rest.AdministradorREST ..> org.springframework.web.bind.annotation.PathVariable
+com.zenkai.pe.UniversidadPOO.rest.AdministradorREST ..> org.springframework.web.bind.annotation.PostMapping
+com.zenkai.pe.UniversidadPOO.rest.AdministradorREST ..> org.springframework.web.bind.annotation.PutMapping
+com.zenkai.pe.UniversidadPOO.rest.AdministradorREST ..> org.springframework.web.bind.annotation.RequestBody
+com.zenkai.pe.UniversidadPOO.rest.AdministradorREST ..> org.springframework.web.bind.annotation.RequestMapping
+com.zenkai.pe.UniversidadPOO.rest.AdministradorREST ..> org.springframework.web.bind.annotation.RequestParam
+com.zenkai.pe.UniversidadPOO.rest.AdministradorREST ..> org.springframework.web.bind.annotation.ResponseStatus
+com.zenkai.pe.UniversidadPOO.rest.AdministradorREST ..> org.springframework.web.bind.annotation.RestController
+com.zenkai.pe.UniversidadPOO.rest.AdministradorREST ..> com.zenkai.pe.UniversidadPOO.Entity.Alumno
+com.zenkai.pe.UniversidadPOO.rest.AdministradorREST ..> com.zenkai.pe.UniversidadPOO.Entity.Profesor
+com.zenkai.pe.UniversidadPOO.rest.AdministradorREST ..> com.zenkai.pe.UniversidadPOO.Utils.Paginador
+com.zenkai.pe.UniversidadPOO.rest.AdministradorREST ..> com.zenkai.pe.UniversidadPOO.dto.AlumnoDTO
+com.zenkai.pe.UniversidadPOO.rest.AdministradorREST ..> com.zenkai.pe.UniversidadPOO.dto.ProfesorDTO
+com.zenkai.pe.UniversidadPOO.rest.AdministradorREST ..> com.zenkai.pe.UniversidadPOO.dto.UsuarioDTO
+com.zenkai.pe.UniversidadPOO.rest.AdministradorREST ..> com.zenkai.pe.UniversidadPOO.service.AdministradorService
+com.zenkai.pe.UniversidadPOO.rest.AdministradorREST ..> com.zenkai.pe.UniversidadPOO.service.AlumnoService
+com.zenkai.pe.UniversidadPOO.rest.AdministradorREST ..> com.zenkai.pe.UniversidadPOO.service.ProfesorService
+com.zenkai.pe.UniversidadPOO.rest.AdministradorREST ..> com.zenkai.pe.UniversidadPOO.service.UsuarioMapper
+com.zenkai.pe.UniversidadPOO.rest.AdministradorREST ..> com.zenkai.pe.UniversidadPOO.service.UsuarioService
+com.zenkai.pe.UniversidadPOO.rest.AdministradorREST ..> java.util.List
+com.zenkai.pe.UniversidadPOO.rest.AdministradorREST ..> java.util.Map
+com.zenkai.pe.UniversidadPOO.rest.AdministradorREST ..> java.util.Set
+com.zenkai.pe.UniversidadPOO.rest.AdministradorREST ..> org.springframework.http.HttpStatus
+com.zenkai.pe.UniversidadPOO.rest.AdministradorREST ..> org.springframework.web.server.ResponseStatusException
+com.zenkai.pe.UniversidadPOO.rest.AlumnoREST ..> com.zenkai.pe.UniversidadPOO.Entity.Usuario
+com.zenkai.pe.UniversidadPOO.rest.AlumnoREST ..> org.springframework.beans.factory.annotation.Autowired
+com.zenkai.pe.UniversidadPOO.rest.AlumnoREST ..> org.springframework.web.bind.annotation.GetMapping
+com.zenkai.pe.UniversidadPOO.rest.AlumnoREST ..> org.springframework.web.bind.annotation.PathVariable
+com.zenkai.pe.UniversidadPOO.rest.AlumnoREST ..> org.springframework.web.bind.annotation.PostMapping
+com.zenkai.pe.UniversidadPOO.rest.AlumnoREST ..> org.springframework.web.bind.annotation.RequestBody
+com.zenkai.pe.UniversidadPOO.rest.AlumnoREST ..> org.springframework.web.bind.annotation.RequestMapping
+com.zenkai.pe.UniversidadPOO.rest.AlumnoREST ..> org.springframework.web.bind.annotation.RestController
+com.zenkai.pe.UniversidadPOO.rest.AlumnoREST ..> com.zenkai.pe.UniversidadPOO.Entity.Alumno
+com.zenkai.pe.UniversidadPOO.rest.AlumnoREST ..> com.zenkai.pe.UniversidadPOO.Entity.Matricula
+com.zenkai.pe.UniversidadPOO.rest.AlumnoREST ..> com.zenkai.pe.UniversidadPOO.service.AlumnoService
+com.zenkai.pe.UniversidadPOO.rest.AlumnoREST ..> com.zenkai.pe.UniversidadPOO.service.UsuarioService
+com.zenkai.pe.UniversidadPOO.rest.AlumnoREST ..> java.net.URI
+com.zenkai.pe.UniversidadPOO.rest.AlumnoREST ..> java.util.List
+com.zenkai.pe.UniversidadPOO.rest.AlumnoREST ..> java.util.Optional
+com.zenkai.pe.UniversidadPOO.rest.AlumnoREST ..> org.springframework.data.domain.Sort
+com.zenkai.pe.UniversidadPOO.rest.AlumnoREST ..> org.springframework.http.HttpStatus
+com.zenkai.pe.UniversidadPOO.rest.AlumnoREST ..> org.springframework.http.ResponseEntity
+com.zenkai.pe.UniversidadPOO.rest.AlumnoREST ..> org.springframework.security.core.Authentication
+com.zenkai.pe.UniversidadPOO.rest.AlumnoREST ..> org.springframework.web.server.ResponseStatusException
+com.zenkai.pe.UniversidadPOO.rest.AlumnoREST ..> com.zenkai.pe.UniversidadPOO.enums.EstadoMatricula
+com.zenkai.pe.UniversidadPOO.rest.AulaREST ..> com.zenkai.pe.UniversidadPOO.rest.GetMapping
+com.zenkai.pe.UniversidadPOO.rest.AulaREST ..> com.zenkai.pe.UniversidadPOO.rest.PathVariable
+com.zenkai.pe.UniversidadPOO.rest.AulaREST ..> com.zenkai.pe.UniversidadPOO.rest.PostMapping
+com.zenkai.pe.UniversidadPOO.rest.AulaREST ..> com.zenkai.pe.UniversidadPOO.rest.RequestBody
+com.zenkai.pe.UniversidadPOO.rest.AulaREST ..> com.zenkai.pe.UniversidadPOO.rest.RequestMapping
+com.zenkai.pe.UniversidadPOO.rest.AulaREST ..> com.zenkai.pe.UniversidadPOO.rest.RestController
+com.zenkai.pe.UniversidadPOO.rest.AulaREST ..> org.springframework.beans.factory.annotation.Autowired
+com.zenkai.pe.UniversidadPOO.rest.AulaREST ..> com.zenkai.pe.UniversidadPOO.Entity.Aula
+com.zenkai.pe.UniversidadPOO.rest.AulaREST ..> com.zenkai.pe.UniversidadPOO.service.AulaService
+com.zenkai.pe.UniversidadPOO.rest.AulaREST ..> java.net.URI
+com.zenkai.pe.UniversidadPOO.rest.AulaREST ..> java.util.List
+com.zenkai.pe.UniversidadPOO.rest.AulaREST ..> java.util.Optional
+com.zenkai.pe.UniversidadPOO.rest.AulaREST ..> org.springframework.data.domain.Sort
+com.zenkai.pe.UniversidadPOO.rest.AulaREST ..> org.springframework.http.HttpStatus
+com.zenkai.pe.UniversidadPOO.rest.AulaREST ..> org.springframework.http.ResponseEntity
+com.zenkai.pe.UniversidadPOO.rest.AuthController ..> org.springframework.beans.factory.annotation.Autowired
+com.zenkai.pe.UniversidadPOO.rest.AuthController ..> org.springframework.web.bind.annotation.PostMapping
+com.zenkai.pe.UniversidadPOO.rest.AuthController ..> org.springframework.web.bind.annotation.RequestBody
+com.zenkai.pe.UniversidadPOO.rest.AuthController ..> org.springframework.web.bind.annotation.RequestMapping
+com.zenkai.pe.UniversidadPOO.rest.AuthController ..> org.springframework.web.bind.annotation.RestController
+com.zenkai.pe.UniversidadPOO.rest.AuthController ..> com.zenkai.pe.UniversidadPOO.dto.LoginDTO
+com.zenkai.pe.UniversidadPOO.rest.AuthController ..> com.zenkai.pe.UniversidadPOO.security.JWTAuthResponseDTO
+com.zenkai.pe.UniversidadPOO.rest.AuthController ..> com.zenkai.pe.UniversidadPOO.security.JwtTokenProvider
+com.zenkai.pe.UniversidadPOO.rest.AuthController ..> org.springframework.http.HttpStatus
+com.zenkai.pe.UniversidadPOO.rest.AuthController ..> org.springframework.http.ResponseEntity
+com.zenkai.pe.UniversidadPOO.rest.AuthController ..> org.springframework.security.authentication.AuthenticationManager
+com.zenkai.pe.UniversidadPOO.rest.AuthController ..> org.springframework.security.authentication.UsernamePasswordAuthenticationToken
+com.zenkai.pe.UniversidadPOO.rest.AuthController ..> org.springframework.security.core.Authentication
+com.zenkai.pe.UniversidadPOO.rest.AuthController ..> org.springframework.security.core.context.SecurityContextHolder
+com.zenkai.pe.UniversidadPOO.rest.MatriculaREST ..> org.springframework.beans.factory.annotation.Autowired
+com.zenkai.pe.UniversidadPOO.rest.MatriculaREST ..> org.springframework.web.bind.annotation.GetMapping
+com.zenkai.pe.UniversidadPOO.rest.MatriculaREST ..> org.springframework.web.bind.annotation.RequestMapping
+com.zenkai.pe.UniversidadPOO.rest.MatriculaREST ..> org.springframework.web.bind.annotation.RequestParam
+com.zenkai.pe.UniversidadPOO.rest.MatriculaREST ..> org.springframework.web.bind.annotation.RestController
+com.zenkai.pe.UniversidadPOO.rest.MatriculaREST ..> com.zenkai.pe.UniversidadPOO.Entity.Matricula
+com.zenkai.pe.UniversidadPOO.rest.MatriculaREST ..> com.zenkai.pe.UniversidadPOO.service.MatriculaService
+com.zenkai.pe.UniversidadPOO.rest.MatriculaREST ..> java.util.List
+com.zenkai.pe.UniversidadPOO.rest.MatriculaREST ..> org.springframework.data.domain.Sort
+com.zenkai.pe.UniversidadPOO.rest.MatriculaREST ..> org.springframework.http.ResponseEntity
+com.zenkai.pe.UniversidadPOO.rest.MatriculaREST ..> com.zenkai.pe.UniversidadPOO.enums.EstadoMatricula
+com.zenkai.pe.UniversidadPOO.rest.ProfesorREST ..> com.zenkai.pe.UniversidadPOO.rest.PathVariable
+com.zenkai.pe.UniversidadPOO.rest.ProfesorREST ..> com.zenkai.pe.UniversidadPOO.rest.PostMapping
+com.zenkai.pe.UniversidadPOO.rest.ProfesorREST ..> com.zenkai.pe.UniversidadPOO.rest.RequestBody
+com.zenkai.pe.UniversidadPOO.rest.ProfesorREST ..> com.zenkai.pe.UniversidadPOO.rest.RequestMapping
+com.zenkai.pe.UniversidadPOO.rest.ProfesorREST ..> com.zenkai.pe.UniversidadPOO.rest.RestController
+com.zenkai.pe.UniversidadPOO.rest.ProfesorREST ..> org.springframework.beans.factory.annotation.Autowired
+com.zenkai.pe.UniversidadPOO.rest.ProfesorREST ..> org.springframework.web.bind.annotation.GetMapping
+com.zenkai.pe.UniversidadPOO.rest.ProfesorREST ..> com.zenkai.pe.UniversidadPOO.Entity.Alumno
+com.zenkai.pe.UniversidadPOO.rest.ProfesorREST ..> com.zenkai.pe.UniversidadPOO.Entity.Profesor
+com.zenkai.pe.UniversidadPOO.rest.ProfesorREST ..> com.zenkai.pe.UniversidadPOO.Entity.Seccion
+com.zenkai.pe.UniversidadPOO.rest.ProfesorREST ..> com.zenkai.pe.UniversidadPOO.service.ProfesorService
+com.zenkai.pe.UniversidadPOO.rest.ProfesorREST ..> java.lang.Thread.State
+com.zenkai.pe.UniversidadPOO.rest.ProfesorREST ..> java.net.URI
+com.zenkai.pe.UniversidadPOO.rest.ProfesorREST ..> java.util.List
+com.zenkai.pe.UniversidadPOO.rest.ProfesorREST ..> java.util.Optional
+com.zenkai.pe.UniversidadPOO.rest.ProfesorREST ..> java.util.Set
+com.zenkai.pe.UniversidadPOO.rest.ProfesorREST ..> org.springframework.http.HttpStatus
+com.zenkai.pe.UniversidadPOO.rest.ProfesorREST ..> org.springframework.http.ResponseEntity
+com.zenkai.pe.UniversidadPOO.rest.ProfesorREST ..> org.springframework.security.core.Authentication
+com.zenkai.pe.UniversidadPOO.rest.ProfesorREST ..> org.springframework.web.server.ResponseStatusException
+com.zenkai.pe.UniversidadPOO.rest.UsuarioREST ..> com.zenkai.pe.UniversidadPOO.rest.GetMapping
+com.zenkai.pe.UniversidadPOO.rest.UsuarioREST ..> com.zenkai.pe.UniversidadPOO.rest.RequestMapping
+com.zenkai.pe.UniversidadPOO.rest.UsuarioREST ..> com.zenkai.pe.UniversidadPOO.rest.RestController
+com.zenkai.pe.UniversidadPOO.rest.UsuarioREST ..> org.springframework.beans.factory.annotation.Autowired
+com.zenkai.pe.UniversidadPOO.rest.UsuarioREST ..> org.springframework.security.access.prepost.PreAuthorize
+com.zenkai.pe.UniversidadPOO.rest.UsuarioREST ..> com.zenkai.pe.UniversidadPOO.dto.UsuarioDTO
+com.zenkai.pe.UniversidadPOO.rest.UsuarioREST ..> com.zenkai.pe.UniversidadPOO.service.UsuarioService
+com.zenkai.pe.UniversidadPOO.rest.UsuarioREST ..> java.util.Set
+com.zenkai.pe.UniversidadPOO.rest.UsuarioREST ..> org.springframework.security.core.Authentication
+com.zenkai.pe.UniversidadPOO.security.CustomUserDetailsService ..> com.zenkai.pe.UniversidadPOO.Entity.Usuario
+com.zenkai.pe.UniversidadPOO.security.CustomUserDetailsService ..> java.lang.Override
+com.zenkai.pe.UniversidadPOO.security.CustomUserDetailsService ..> org.springframework.beans.factory.annotation.Autowired
+com.zenkai.pe.UniversidadPOO.security.CustomUserDetailsService ..> org.springframework.stereotype.Service
+com.zenkai.pe.UniversidadPOO.security.CustomUserDetailsService ..> java.util.Collection
+com.zenkai.pe.UniversidadPOO.security.CustomUserDetailsService ..> java.util.List
+com.zenkai.pe.UniversidadPOO.security.CustomUserDetailsService ..> org.springframework.security.core.GrantedAuthority
+com.zenkai.pe.UniversidadPOO.security.CustomUserDetailsService ..> org.springframework.security.core.authority.SimpleGrantedAuthority
+com.zenkai.pe.UniversidadPOO.security.CustomUserDetailsService ..> org.springframework.security.core.userdetails.User
+com.zenkai.pe.UniversidadPOO.security.CustomUserDetailsService ..> org.springframework.security.core.userdetails.UsernameNotFoundException
+com.zenkai.pe.UniversidadPOO.security.CustomUserDetailsService ..> com.zenkai.pe.UniversidadPOO.enums.RolUsuario
+com.zenkai.pe.UniversidadPOO.security.CustomUserDetailsService ..> com.zenkai.pe.UniversidadPOO.repository.IUsuarioRepository
+com.zenkai.pe.UniversidadPOO.security.CustomUserDetailsService ..> org.springframework.security.core.userdetails.UserDetails
+com.zenkai.pe.UniversidadPOO.security.CustomUserDetailsService --|> org.springframework.security.core.userdetails.UserDetailsService
+com.zenkai.pe.UniversidadPOO.security.JwtAuthenticationEntryPoint ..> java.lang.Override
+com.zenkai.pe.UniversidadPOO.security.JwtAuthenticationEntryPoint ..> org.springframework.stereotype.Component
+com.zenkai.pe.UniversidadPOO.security.JwtAuthenticationEntryPoint ..> jakarta.servlet.ServletException
+com.zenkai.pe.UniversidadPOO.security.JwtAuthenticationEntryPoint ..> jakarta.servlet.http.HttpServletRequest
+com.zenkai.pe.UniversidadPOO.security.JwtAuthenticationEntryPoint ..> jakarta.servlet.http.HttpServletResponse
+com.zenkai.pe.UniversidadPOO.security.JwtAuthenticationEntryPoint ..> java.io.IOException
+com.zenkai.pe.UniversidadPOO.security.JwtAuthenticationEntryPoint ..> org.springframework.security.core.AuthenticationException
+com.zenkai.pe.UniversidadPOO.security.JwtAuthenticationEntryPoint --|> org.springframework.security.web.AuthenticationEntryPoint
+com.zenkai.pe.UniversidadPOO.security.JwtAuthenticationFilter ..> java.lang.Override
+com.zenkai.pe.UniversidadPOO.security.JwtAuthenticationFilter ..> org.springframework.beans.factory.annotation.Autowired
+com.zenkai.pe.UniversidadPOO.security.JwtAuthenticationFilter ..> jakarta.servlet.FilterChain
+com.zenkai.pe.UniversidadPOO.security.JwtAuthenticationFilter ..> jakarta.servlet.ServletException
+com.zenkai.pe.UniversidadPOO.security.JwtAuthenticationFilter ..> jakarta.servlet.http.HttpServletRequest
+com.zenkai.pe.UniversidadPOO.security.JwtAuthenticationFilter ..> jakarta.servlet.http.HttpServletResponse
+com.zenkai.pe.UniversidadPOO.security.JwtAuthenticationFilter ..> java.io.IOException
+com.zenkai.pe.UniversidadPOO.security.JwtAuthenticationFilter ..> org.springframework.security.authentication.UsernamePasswordAuthenticationToken
+com.zenkai.pe.UniversidadPOO.security.JwtAuthenticationFilter ..> org.springframework.security.core.context.SecurityContextHolder
+com.zenkai.pe.UniversidadPOO.security.JwtAuthenticationFilter ..> org.springframework.security.web.authentication.WebAuthenticationDetailsSource
+com.zenkai.pe.UniversidadPOO.security.JwtAuthenticationFilter ..> org.springframework.util.StringUtils
+com.zenkai.pe.UniversidadPOO.security.JwtAuthenticationFilter --|> org.springframework.web.filter.OncePerRequestFilter
+com.zenkai.pe.UniversidadPOO.security.JwtAuthenticationFilter ..> org.springframework.security.core.userdetails.UserDetails
+com.zenkai.pe.UniversidadPOO.security.JwtTokenProvider ..> org.springframework.beans.factory.annotation.Value
+com.zenkai.pe.UniversidadPOO.security.JwtTokenProvider ..> org.springframework.stereotype.Component
+com.zenkai.pe.UniversidadPOO.security.JwtTokenProvider ..> io.jsonwebtoken.Claims
+com.zenkai.pe.UniversidadPOO.security.JwtTokenProvider ..> io.jsonwebtoken.ExpiredJwtException
+com.zenkai.pe.UniversidadPOO.security.JwtTokenProvider ..> io.jsonwebtoken.Jwts
+com.zenkai.pe.UniversidadPOO.security.JwtTokenProvider ..> io.jsonwebtoken.MalformedJwtException
+com.zenkai.pe.UniversidadPOO.security.JwtTokenProvider ..> io.jsonwebtoken.SignatureException
+com.zenkai.pe.UniversidadPOO.security.JwtTokenProvider ..> io.jsonwebtoken.UnsupportedJwtException
+com.zenkai.pe.UniversidadPOO.security.JwtTokenProvider ..> io.jsonwebtoken.io.Decoders
+com.zenkai.pe.UniversidadPOO.security.JwtTokenProvider ..> io.jsonwebtoken.security.Keys
+com.zenkai.pe.UniversidadPOO.security.JwtTokenProvider ..> java.util.Date
+com.zenkai.pe.UniversidadPOO.security.JwtTokenProvider ..> javax.crypto.SecretKey
+com.zenkai.pe.UniversidadPOO.security.JwtTokenProvider ..> org.springframework.http.HttpStatus
+com.zenkai.pe.UniversidadPOO.security.JwtTokenProvider ..> org.springframework.security.core.Authentication
+com.zenkai.pe.UniversidadPOO.security.JwtTokenProvider ..> org.springframework.web.server.ResponseStatusException
+com.zenkai.pe.UniversidadPOO.service.AdministradorService ..> com.zenkai.pe.UniversidadPOO.Entity.Usuario
+com.zenkai.pe.UniversidadPOO.service.AdministradorService ..> org.springframework.beans.factory.annotation.Autowired
+com.zenkai.pe.UniversidadPOO.service.AdministradorService ..> org.springframework.stereotype.Service
+com.zenkai.pe.UniversidadPOO.service.AdministradorService ..> com.zenkai.pe.UniversidadPOO.Entity.Alumno
+com.zenkai.pe.UniversidadPOO.service.AdministradorService ..> com.zenkai.pe.UniversidadPOO.Entity.Profesor
+com.zenkai.pe.UniversidadPOO.service.AdministradorService ..> com.zenkai.pe.UniversidadPOO.dto.AlumnoDTO
+com.zenkai.pe.UniversidadPOO.service.AdministradorService ..> com.zenkai.pe.UniversidadPOO.dto.ProfesorDTO
+com.zenkai.pe.UniversidadPOO.service.AdministradorService ..> org.springframework.http.HttpStatus
+com.zenkai.pe.UniversidadPOO.service.AdministradorService ..> org.springframework.web.server.ResponseStatusException
+com.zenkai.pe.UniversidadPOO.service.AdministradorService ..> com.zenkai.pe.UniversidadPOO.enums.EstadoUsuario
+com.zenkai.pe.UniversidadPOO.service.AdministradorService ..> com.zenkai.pe.UniversidadPOO.enums.RolUsuario
+com.zenkai.pe.UniversidadPOO.service.AdministradorService ..> com.zenkai.pe.UniversidadPOO.repository.IAlumnoRepository
+com.zenkai.pe.UniversidadPOO.service.AdministradorService ..> com.zenkai.pe.UniversidadPOO.repository.IProfesorRepository
+com.zenkai.pe.UniversidadPOO.service.AdministradorService ..> com.zenkai.pe.UniversidadPOO.repository.IUsuarioRepository
+com.zenkai.pe.UniversidadPOO.service.AlumnoService ..> org.springframework.beans.factory.annotation.Autowired
+com.zenkai.pe.UniversidadPOO.service.AlumnoService ..> org.springframework.stereotype.Service
+com.zenkai.pe.UniversidadPOO.service.AlumnoService ..> com.zenkai.pe.UniversidadPOO.Entity.Alumno
+com.zenkai.pe.UniversidadPOO.service.AlumnoService ..> com.zenkai.pe.UniversidadPOO.Entity.Matricula
+com.zenkai.pe.UniversidadPOO.service.AlumnoService ..> com.zenkai.pe.UniversidadPOO.Utils.Comparador
+com.zenkai.pe.UniversidadPOO.service.AlumnoService ..> com.zenkai.pe.UniversidadPOO.Utils.IteradorFiltroUsuarios
+com.zenkai.pe.UniversidadPOO.service.AlumnoService ..> com.zenkai.pe.UniversidadPOO.dto.UsuarioDTO
+com.zenkai.pe.UniversidadPOO.service.AlumnoService ..> java.util.ArrayList
+com.zenkai.pe.UniversidadPOO.service.AlumnoService ..> java.util.List
+com.zenkai.pe.UniversidadPOO.service.AlumnoService ..> java.util.Optional
+com.zenkai.pe.UniversidadPOO.service.AlumnoService ..> java.util.function.Function
+com.zenkai.pe.UniversidadPOO.service.AlumnoService ..> org.springframework.data.domain.Sort
+com.zenkai.pe.UniversidadPOO.service.AlumnoService ..> com.zenkai.pe.UniversidadPOO.enums.EstadoMatricula
+com.zenkai.pe.UniversidadPOO.service.AlumnoService ..> com.zenkai.pe.UniversidadPOO.repository.IAlumnoRepository
+com.zenkai.pe.UniversidadPOO.service.AlumnoService ..> java.util.Comparator
+com.zenkai.pe.UniversidadPOO.service.AulaService ..> java.lang.Override
+com.zenkai.pe.UniversidadPOO.service.AulaService ..> org.springframework.beans.factory.annotation.Autowired
+com.zenkai.pe.UniversidadPOO.service.AulaService ..> org.springframework.stereotype.Service
+com.zenkai.pe.UniversidadPOO.service.AulaService ..> com.zenkai.pe.UniversidadPOO.Entity.Aula
+com.zenkai.pe.UniversidadPOO.service.AulaService ..> java.util.List
+com.zenkai.pe.UniversidadPOO.service.AulaService ..> java.util.Optional
+com.zenkai.pe.UniversidadPOO.service.AulaService ..> java.util.function.Function
+com.zenkai.pe.UniversidadPOO.service.AulaService ..> org.springframework.data.domain.Example
+com.zenkai.pe.UniversidadPOO.service.AulaService ..> org.springframework.data.domain.Page
+com.zenkai.pe.UniversidadPOO.service.AulaService ..> org.springframework.data.domain.Pageable
+com.zenkai.pe.UniversidadPOO.service.AulaService ..> org.springframework.data.domain.Sort
+com.zenkai.pe.UniversidadPOO.service.AulaService ..> org.springframework.data.repository.query.FluentQuery
+com.zenkai.pe.UniversidadPOO.service.AulaService --|> com.zenkai.pe.UniversidadPOO.repository.IAulaRepository
+com.zenkai.pe.UniversidadPOO.service.MatriculaService ..> java.lang.Override
+com.zenkai.pe.UniversidadPOO.service.MatriculaService ..> org.springframework.beans.factory.annotation.Autowired
+com.zenkai.pe.UniversidadPOO.service.MatriculaService ..> org.springframework.stereotype.Service
+com.zenkai.pe.UniversidadPOO.service.MatriculaService ..> com.zenkai.pe.UniversidadPOO.Entity.Matricula
+com.zenkai.pe.UniversidadPOO.service.MatriculaService ..> java.util.List
+com.zenkai.pe.UniversidadPOO.service.MatriculaService ..> java.util.Optional
+com.zenkai.pe.UniversidadPOO.service.MatriculaService ..> java.util.function.Function
+com.zenkai.pe.UniversidadPOO.service.MatriculaService ..> org.springframework.data.domain.Example
+com.zenkai.pe.UniversidadPOO.service.MatriculaService ..> org.springframework.data.domain.Page
+com.zenkai.pe.UniversidadPOO.service.MatriculaService ..> org.springframework.data.domain.Pageable
+com.zenkai.pe.UniversidadPOO.service.MatriculaService ..> org.springframework.data.domain.Sort
+com.zenkai.pe.UniversidadPOO.service.MatriculaService ..> org.springframework.data.repository.query.FluentQuery
+com.zenkai.pe.UniversidadPOO.service.MatriculaService ..> com.zenkai.pe.UniversidadPOO.enums.EstadoMatricula
+com.zenkai.pe.UniversidadPOO.service.MatriculaService --|> com.zenkai.pe.UniversidadPOO.repository.IMatriculaRepository
+com.zenkai.pe.UniversidadPOO.service.ProfesorService ..> org.springframework.beans.factory.annotation.Autowired
+com.zenkai.pe.UniversidadPOO.service.ProfesorService ..> org.springframework.stereotype.Service
+com.zenkai.pe.UniversidadPOO.service.ProfesorService ..> com.zenkai.pe.UniversidadPOO.Entity.Alumno
+com.zenkai.pe.UniversidadPOO.service.ProfesorService ..> com.zenkai.pe.UniversidadPOO.Entity.Profesor
+com.zenkai.pe.UniversidadPOO.service.ProfesorService ..> com.zenkai.pe.UniversidadPOO.Entity.Seccion
+com.zenkai.pe.UniversidadPOO.service.ProfesorService ..> com.zenkai.pe.UniversidadPOO.Utils.Comparador
+com.zenkai.pe.UniversidadPOO.service.ProfesorService ..> com.zenkai.pe.UniversidadPOO.Utils.IteradorFiltroUsuarios
+com.zenkai.pe.UniversidadPOO.service.ProfesorService ..> com.zenkai.pe.UniversidadPOO.dto.ProfesorDTO
+com.zenkai.pe.UniversidadPOO.service.ProfesorService ..> java.util.List
+com.zenkai.pe.UniversidadPOO.service.ProfesorService ..> java.util.Optional
+com.zenkai.pe.UniversidadPOO.service.ProfesorService ..> java.util.Set
+com.zenkai.pe.UniversidadPOO.service.ProfesorService ..> com.zenkai.pe.UniversidadPOO.repository.IProfesorRepository
+com.zenkai.pe.UniversidadPOO.service.ProfesorService ..> java.util.Comparator
+com.zenkai.pe.UniversidadPOO.service.UserDetailsServiceImpl ..> com.zenkai.pe.UniversidadPOO.Entity.Usuario
+com.zenkai.pe.UniversidadPOO.service.UserDetailsServiceImpl ..> java.lang.Override
+com.zenkai.pe.UniversidadPOO.service.UserDetailsServiceImpl ..> lombok.RequiredArgsConstructor
+com.zenkai.pe.UniversidadPOO.service.UserDetailsServiceImpl ..> org.springframework.stereotype.Service
+com.zenkai.pe.UniversidadPOO.service.UserDetailsServiceImpl ..> com.zenkai.pe.UniversidadPOO.Entity.SecurityUser
+com.zenkai.pe.UniversidadPOO.service.UserDetailsServiceImpl ..> org.springframework.security.core.userdetails.UsernameNotFoundException
+com.zenkai.pe.UniversidadPOO.service.UserDetailsServiceImpl ..> com.zenkai.pe.UniversidadPOO.repository.UserRepository
+com.zenkai.pe.UniversidadPOO.service.UserDetailsServiceImpl ..> org.springframework.security.core.userdetails.UserDetails
+com.zenkai.pe.UniversidadPOO.service.UserDetailsServiceImpl --|> org.springframework.security.core.userdetails.UserDetailsService
+com.zenkai.pe.UniversidadPOO.service.UsuarioMapper ..> com.zenkai.pe.UniversidadPOO.Entity.Usuario
+com.zenkai.pe.UniversidadPOO.service.UsuarioMapper ..> org.springframework.stereotype.Component
+com.zenkai.pe.UniversidadPOO.service.UsuarioMapper ..> com.zenkai.pe.UniversidadPOO.Entity.Administrador
+com.zenkai.pe.UniversidadPOO.service.UsuarioMapper ..> com.zenkai.pe.UniversidadPOO.Entity.Alumno
+com.zenkai.pe.UniversidadPOO.service.UsuarioMapper ..> com.zenkai.pe.UniversidadPOO.Entity.Profesor
+com.zenkai.pe.UniversidadPOO.service.UsuarioMapper ..> com.zenkai.pe.UniversidadPOO.dto.AdministradorDTO
+com.zenkai.pe.UniversidadPOO.service.UsuarioMapper ..> com.zenkai.pe.UniversidadPOO.dto.AlumnoDTO
+com.zenkai.pe.UniversidadPOO.service.UsuarioMapper ..> com.zenkai.pe.UniversidadPOO.dto.ProfesorDTO
+com.zenkai.pe.UniversidadPOO.service.UsuarioMapper ..> com.zenkai.pe.UniversidadPOO.dto.UsuarioDTO
+com.zenkai.pe.UniversidadPOO.service.UsuarioService ..> com.zenkai.pe.UniversidadPOO.Entity.Usuario
+com.zenkai.pe.UniversidadPOO.service.UsuarioService ..> org.springframework.beans.factory.annotation.Autowired
+com.zenkai.pe.UniversidadPOO.service.UsuarioService ..> org.springframework.stereotype.Service
+com.zenkai.pe.UniversidadPOO.service.UsuarioService ..> com.zenkai.pe.UniversidadPOO.Entity.Administrador
+com.zenkai.pe.UniversidadPOO.service.UsuarioService ..> com.zenkai.pe.UniversidadPOO.Entity.Alumno
+com.zenkai.pe.UniversidadPOO.service.UsuarioService ..> com.zenkai.pe.UniversidadPOO.Entity.Profesor
+com.zenkai.pe.UniversidadPOO.service.UsuarioService ..> com.zenkai.pe.UniversidadPOO.dto.AdministradorDTO
+com.zenkai.pe.UniversidadPOO.service.UsuarioService ..> com.zenkai.pe.UniversidadPOO.dto.AlumnoDTO
+com.zenkai.pe.UniversidadPOO.service.UsuarioService ..> com.zenkai.pe.UniversidadPOO.dto.ProfesorDTO
+com.zenkai.pe.UniversidadPOO.service.UsuarioService ..> com.zenkai.pe.UniversidadPOO.dto.UsuarioDTO
+com.zenkai.pe.UniversidadPOO.service.UsuarioService ..> java.util.List
+com.zenkai.pe.UniversidadPOO.service.UsuarioService ..> java.util.Optional
+com.zenkai.pe.UniversidadPOO.service.UsuarioService ..> java.util.Set
+com.zenkai.pe.UniversidadPOO.service.UsuarioService ..> java.util.stream.Collectors
+com.zenkai.pe.UniversidadPOO.service.UsuarioService ..> org.springframework.http.HttpStatus
+com.zenkai.pe.UniversidadPOO.service.UsuarioService ..> org.springframework.security.authentication.BadCredentialsException
+com.zenkai.pe.UniversidadPOO.service.UsuarioService ..> org.springframework.security.core.Authentication
+com.zenkai.pe.UniversidadPOO.service.UsuarioService ..> org.springframework.security.core.userdetails.User
+com.zenkai.pe.UniversidadPOO.service.UsuarioService ..> org.springframework.security.core.userdetails.UsernameNotFoundException
+com.zenkai.pe.UniversidadPOO.service.UsuarioService ..> org.springframework.security.crypto.password.PasswordEncoder
+com.zenkai.pe.UniversidadPOO.service.UsuarioService ..> org.springframework.web.server.ResponseStatusException
+com.zenkai.pe.UniversidadPOO.service.UsuarioService ..> com.zenkai.pe.UniversidadPOO.enums.EstadoUsuario
+com.zenkai.pe.UniversidadPOO.service.UsuarioService ..> com.zenkai.pe.UniversidadPOO.repository.IUsuarioRepository
+com.zenkai.pe.UniversidadPOO.service.UsuarioService ..> org.springframework.security.core.userdetails.UserDetails
+com.zenkai.pe.UniversidadPOO.repository.IAdministradorRepository ..> org.springframework.data.jpa.repository.Query
+com.zenkai.pe.UniversidadPOO.repository.IAdministradorRepository ..> com.zenkai.pe.UniversidadPOO.Entity.Administrador
+com.zenkai.pe.UniversidadPOO.repository.IAdministradorRepository ..> com.zenkai.pe.UniversidadPOO.dto.UsuarioDTO
+com.zenkai.pe.UniversidadPOO.repository.IAdministradorRepository ..> java.util.Set
+com.zenkai.pe.UniversidadPOO.repository.IAdministradorRepository --|> org.springframework.data.jpa.repository.JpaRepository
+com.zenkai.pe.UniversidadPOO.repository.IAlumnoRepository ..> org.springframework.data.jpa.repository.Query
+com.zenkai.pe.UniversidadPOO.repository.IAlumnoRepository ..> org.springframework.data.repository.query.Param
+com.zenkai.pe.UniversidadPOO.repository.IAlumnoRepository ..> com.zenkai.pe.UniversidadPOO.Entity.Alumno
+com.zenkai.pe.UniversidadPOO.repository.IAlumnoRepository ..> com.zenkai.pe.UniversidadPOO.Entity.Matricula
+com.zenkai.pe.UniversidadPOO.repository.IAlumnoRepository ..> java.util.List
+com.zenkai.pe.UniversidadPOO.repository.IAlumnoRepository ..> java.util.Optional
+com.zenkai.pe.UniversidadPOO.repository.IAlumnoRepository ..> org.springframework.data.domain.Sort
+com.zenkai.pe.UniversidadPOO.repository.IAlumnoRepository ..> com.zenkai.pe.UniversidadPOO.enums.EstadoMatricula
+com.zenkai.pe.UniversidadPOO.repository.IAlumnoRepository --|> org.springframework.data.jpa.repository.JpaRepository
+com.zenkai.pe.UniversidadPOO.repository.IAulaRepository ..> org.springframework.data.jpa.repository.Query
+com.zenkai.pe.UniversidadPOO.repository.IAulaRepository ..> com.zenkai.pe.UniversidadPOO.Entity.Aula
+com.zenkai.pe.UniversidadPOO.repository.IAulaRepository ..> java.util.List
+com.zenkai.pe.UniversidadPOO.repository.IAulaRepository ..> org.springframework.data.domain.Sort
+com.zenkai.pe.UniversidadPOO.repository.IAulaRepository --|> org.springframework.data.jpa.repository.JpaRepository
+com.zenkai.pe.UniversidadPOO.repository.IMatriculaRepository ..> org.springframework.data.jpa.repository.Query
+com.zenkai.pe.UniversidadPOO.repository.IMatriculaRepository ..> org.springframework.data.repository.query.Param
+com.zenkai.pe.UniversidadPOO.repository.IMatriculaRepository ..> org.springframework.stereotype.Repository
+com.zenkai.pe.UniversidadPOO.repository.IMatriculaRepository ..> com.zenkai.pe.UniversidadPOO.Entity.Matricula
+com.zenkai.pe.UniversidadPOO.repository.IMatriculaRepository ..> java.util.List
+com.zenkai.pe.UniversidadPOO.repository.IMatriculaRepository ..> org.springframework.data.domain.Sort
+com.zenkai.pe.UniversidadPOO.repository.IMatriculaRepository ..> com.zenkai.pe.UniversidadPOO.enums.EstadoMatricula
+com.zenkai.pe.UniversidadPOO.repository.IMatriculaRepository --|> org.springframework.data.jpa.repository.JpaRepository
+com.zenkai.pe.UniversidadPOO.repository.IProfesorRepository ..> org.springframework.data.jpa.repository.Query
+com.zenkai.pe.UniversidadPOO.repository.IProfesorRepository ..> org.springframework.data.repository.query.Param
+com.zenkai.pe.UniversidadPOO.repository.IProfesorRepository ..> com.zenkai.pe.UniversidadPOO.Entity.Alumno
+com.zenkai.pe.UniversidadPOO.repository.IProfesorRepository ..> com.zenkai.pe.UniversidadPOO.Entity.Profesor
+com.zenkai.pe.UniversidadPOO.repository.IProfesorRepository ..> com.zenkai.pe.UniversidadPOO.Entity.Seccion
+com.zenkai.pe.UniversidadPOO.repository.IProfesorRepository ..> java.util.Optional
+com.zenkai.pe.UniversidadPOO.repository.IProfesorRepository ..> java.util.Set
+com.zenkai.pe.UniversidadPOO.repository.IProfesorRepository --|> org.springframework.data.jpa.repository.JpaRepository
+com.zenkai.pe.UniversidadPOO.repository.IUsuarioRepository ..> com.zenkai.pe.UniversidadPOO.Entity.Usuario
+com.zenkai.pe.UniversidadPOO.repository.IUsuarioRepository ..> java.util.Optional
+com.zenkai.pe.UniversidadPOO.repository.IUsuarioRepository --|> org.springframework.data.jpa.repository.JpaRepository
+com.zenkai.pe.UniversidadPOO.repository.UserRepository ..> com.zenkai.pe.UniversidadPOO.Entity.Usuario
+com.zenkai.pe.UniversidadPOO.repository.UserRepository ..> org.springframework.stereotype.Repository
+com.zenkai.pe.UniversidadPOO.repository.UserRepository --|> org.springframework.data.repository.CrudRepository
+@enduml
