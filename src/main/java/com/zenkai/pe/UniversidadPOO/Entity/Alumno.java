@@ -52,8 +52,11 @@ public class Alumno extends Usuario {
     }
 
     public void setCiclo(Integer ciclo) {
-        this.ciclo = ciclo;
+    if (ciclo == null || ciclo <= 0) {
+        throw new IllegalArgumentException("El ciclo debe ser mayor que cero.");
     }
+    this.ciclo = ciclo;
+}
 
     public void setCampus(String campus) {
         this.campus = campus;

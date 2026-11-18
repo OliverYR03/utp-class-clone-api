@@ -126,9 +126,12 @@ public abstract class Usuario {
         this.apellidos = apellidos;
     }
 
-    public void setDni(String dni) {
-        this.dni = dni;
+   public void setDni(String dni) {
+    if (dni == null || !dni.matches("[0-9]{8}")) {
+        throw new IllegalArgumentException("El DNI debe tener ocho dígitos.");
     }
+    this.dni = dni;
+}
 
     public void setNumero(String numero) {
         this.numero = numero;
