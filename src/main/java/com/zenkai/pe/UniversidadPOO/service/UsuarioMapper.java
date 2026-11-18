@@ -27,16 +27,7 @@ public class UsuarioMapper {
             dto = alumnoDTO;
 
         } else if (usuario instanceof Profesor profesor) {
-            ProfesorDTO profesorDTO = new ProfesorDTO();
-
-            profesorDTO.setBonoCursos(profesor.getBonoCursos());
-            profesorDTO.setCursos(profesor.getCursos());
-            profesorDTO.setSueldo(profesor.getSueldo());
-            profesorDTO.setBono(profesor.getBono());
-            profesorDTO.setHoras(profesor.getHoras());
-            dto = profesorDTO;
-
-        } else if (usuario instanceof Administrador administrador) {
+    return convertirProfesorADTO(profesor);} else if (usuario instanceof Administrador administrador) {
             AdministradorDTO administradorDTO = new AdministradorDTO();
 
             administradorDTO.setBonoGestion(
@@ -64,5 +55,29 @@ public class UsuarioMapper {
 
         return dto;
     }
+    public ProfesorDTO convertirProfesorADTO(Profesor profesor) {
+    ProfesorDTO dto = new ProfesorDTO();
 
+    copiarDatosUsuario(profesor, dto);
+    dto.setBonoCursos(profesor.getBonoCursos());
+    dto.setCursos(profesor.getCursos());
+    dto.setSueldo(profesor.getSueldo());
+    dto.setBono(profesor.getBono());
+    dto.setHoras(profesor.getHoras());
+
+    return dto;
+}
+
+private void copiarDatosUsuario(Usuario usuario, UsuarioDTO dto) {
+    dto.setCodigo(usuario.getCodigo());
+    dto.setNombres(usuario.getNombres());
+    dto.setApellidos(usuario.getApellidos());
+    dto.setDni(usuario.getDni());
+    dto.setNumero(usuario.getNumero());
+    dto.setCorreo(usuario.getCorreo());
+    dto.setEstado(usuario.getEstado());
+    dto.setRol(usuario.getRol());
+    dto.setSexo(usuario.getSexo());
+    dto.setCumpleanos(usuario.getCumpleanos());
+}
 }

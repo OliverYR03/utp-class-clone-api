@@ -3,10 +3,13 @@ package com.zenkai.pe.UniversidadPOO.service;
 import com.zenkai.pe.UniversidadPOO.Entity.Alumno;
 import com.zenkai.pe.UniversidadPOO.Entity.Profesor;
 import com.zenkai.pe.UniversidadPOO.Entity.Seccion;
+import com.zenkai.pe.UniversidadPOO.Utils.Comparador;
 import com.zenkai.pe.UniversidadPOO.dto.ProfesorDTO;
 import com.zenkai.pe.UniversidadPOO.dto.UsuarioDTO;
 import com.zenkai.pe.UniversidadPOO.repository.IProfesorRepository;
 import com.zenkai.pe.UniversidadPOO.repository.IUsuarioRepository;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -45,13 +48,38 @@ public class ProfesorService {
         return iprofesorRepository.findAlumnosBySeccion(idSeccion, idProfesor)    ;
     }
     
-    public List<UsuarioDTO> listarProfesores() {
+    public List<ProfesorDTO> listarProfesores() {
     return iprofesorRepository.findAll()
             .stream()
-            .map(usuarioMapper::convertirADTO)
+            .map(usuarioMapper::convertirProfesorADTO)
             .toList();
 }
 
+    
+   public List<ProfesorDTO> ordenarProfesores(
+        String ordenarPor, boolean ascendente
+    ) {
+        List<ProfesorDTO> resultado = new ArrayList<>(listarProfesores());
+
+        Comparator<ProfesorDTO> comparador = switch (ordenarPor) {
+            case "nombres" -> new Comparador<>(
+                    ProfesorDTO::getNombres, String.CASE_INSENSITIVE_ORDER, ascendente);
+            case "apellidos" -> new Comparador<>(
+                    ProfesorDTO::getApellidos, String.CASE_INSENSITIVE_ORDER, ascendente);
+            case "codigo" -> new Comparador<>(
+                    ProfesorDTO::getCodigo, String.CASE_INSENSITIVE_ORDER, ascendente);
+            case "sueldo" -> new Comparador<>(
+                    ProfesorDTO::getSueldo, Comparator.naturalOrder(), ascendente);
+            default -> throw new IllegalArgumentException(
+                    "Criterio inválido: " + ordenarPor);
+        };
+
+        resultado.sort(comparador);
+        return resultado;
+    }
+    
+    
+    /* genericos */
     public void deleteAllInBatch(Iterable<Profesor> entities) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
