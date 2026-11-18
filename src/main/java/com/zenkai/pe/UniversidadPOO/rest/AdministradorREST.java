@@ -77,10 +77,10 @@ public class AdministradorREST {
     
     @GetMapping("/usuarios/profesores")
     @PreAuthorize("hasRole('ADMIN')")
-    public Map<String,Object> listarProfesores(@RequestParam(defaultValue="1") int pagina, @RequestParam(defaultValue="20") int filas, @RequestParam(defaultValue = "apellidos") String ordenarPor, @RequestParam(defaultValue = "true") boolean ascendente) {
+    public Map<String,Object> listarProfesores(@RequestParam(defaultValue="1") int pagina, @RequestParam(defaultValue="20") int filas, @RequestParam(defaultValue = "apellidos") String ordenarPor, @RequestParam(defaultValue = "true") boolean ascendente, @RequestParam(defaultValue = "") String texto) {
         Paginador<ProfesorDTO> paginador = new Paginador<>();
         
-        paginador.establecerDatos(profesorService.ordenarProfesores(ordenarPor, ascendente));
+        paginador.establecerDatos(profesorService.ordenarProfesores(ordenarPor, ascendente, texto));
         paginador.establecerFilasPorPagina(filas);
         if (pagina <1 || pagina > paginador.getTotalPaginas()){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
@@ -114,11 +114,11 @@ public class AdministradorREST {
 
     @GetMapping("/usuarios/alumnos")
     @PreAuthorize("hasRole('ADMIN')")
-    public Map<String, Object> listarAlumnos(@RequestParam(defaultValue= "1") int pagina, @RequestParam(defaultValue = "5") int filas, @RequestParam(defaultValue = "apellidos") String ordenarPor, @RequestParam(defaultValue = "true") boolean ascendente) {
+    public Map<String, Object> listarAlumnos(@RequestParam(defaultValue= "1") int pagina, @RequestParam(defaultValue = "5") int filas, @RequestParam(defaultValue = "apellidos") String ordenarPor, @RequestParam(defaultValue = "true") boolean ascendente, @RequestParam(defaultValue = "") String texto) {
         Paginador<UsuarioDTO> paginador = new Paginador<>();
-        
+         
         paginador.establecerDatos(
-                alumnoService.ordenarAlumnos(ordenarPor, ascendente));
+                alumnoService.ordenarAlumnos(ordenarPor, ascendente, texto));
         paginador.establecerFilasPorPagina(filas);
         if (pagina < 1 || pagina > paginador.getTotalPaginas()){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,

@@ -3,6 +3,7 @@ package com.zenkai.pe.UniversidadPOO.service;
 import com.zenkai.pe.UniversidadPOO.Entity.Alumno;
 import com.zenkai.pe.UniversidadPOO.Entity.Matricula;
 import com.zenkai.pe.UniversidadPOO.Utils.Comparador;
+import com.zenkai.pe.UniversidadPOO.Utils.IteradorFiltroUsuarios;
 import com.zenkai.pe.UniversidadPOO.dto.UsuarioDTO;
 import com.zenkai.pe.UniversidadPOO.enums.EstadoMatricula;
 import com.zenkai.pe.UniversidadPOO.repository.IAlumnoRepository;
@@ -57,9 +58,11 @@ public class AlumnoService {
     
    public List<UsuarioDTO> ordenarAlumnos(
         String ordenarPor,
-        boolean ascendente
+        boolean ascendente,
+        String texto
 ) {
-    List<UsuarioDTO> resultado = new ArrayList<>(listarAlumnos());
+    List<UsuarioDTO> resultado =
+            IteradorFiltroUsuarios.filtrarPorTexto(listarAlumnos(), texto);
 
     Function<UsuarioDTO, String> obtenerValor = switch (ordenarPor) {
         case "nombres" -> UsuarioDTO::getNombres;
