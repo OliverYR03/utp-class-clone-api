@@ -8,7 +8,6 @@ import jakarta.persistence.InheritanceType;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -26,8 +25,17 @@ public abstract class Empleado extends Usuario {
 
     public Empleado(BigDecimal sueldo, int horas, BigDecimal bono, int id_usuario, String codigo, String nombres, String apellidos, String dni, String numero, String correo, RolUsuario rol, String contrasena, char sexo, Date cumpleanos) {
         super(id_usuario, codigo, nombres, apellidos, dni, numero, correo, rol, contrasena, sexo, cumpleanos);
+          if (sueldo == null || sueldo.compareTo(BigDecimal.ZERO) <= 0) {
+            throw new IllegalArgumentException("El sueldo debe ser mayor a 0.");
+        }
         this.sueldo = sueldo;
+         if (horas <= 0) {
+            throw new IllegalArgumentException("Las horas deben ser mayor a 0.");
+        }
         this.horas = horas;
+         if (bono == null || bono.compareTo(BigDecimal.ZERO) <= 0) {
+            throw new IllegalArgumentException("El bono debe ser mayor a 0.");
+        }
         this.bono = bono;
     }
 
