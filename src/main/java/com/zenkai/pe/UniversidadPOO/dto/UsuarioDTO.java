@@ -18,7 +18,7 @@ public class UsuarioDTO {
     private EstadoUsuario estado;
     @Enumerated(EnumType.STRING)
     private RolUsuario rol;
-    private char sexo;
+    private Character sexo;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date cumpleanos;
     

@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -29,7 +30,11 @@ import org.springframework.web.server.ResponseStatusException;
 public class UsuarioService {
 
     private final IUsuarioRepository usuarioRepository;
+    
     private final AlumnoService alumnoService;
+    @Autowired
+    private UsuarioMapper usuarioMapper;
+    
     private final PasswordEncoder passwordEncoder;
 
     public UsuarioService(
@@ -42,63 +47,11 @@ public class UsuarioService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    private UsuarioDTO convertirADTO(Usuario usuario) {
-        UsuarioDTO dto;
-
-        if (usuario instanceof Alumno alumno) {
-            AlumnoDTO alumnoDTO = new AlumnoDTO();
-
-            alumnoDTO.setCiclo(alumno.getCiclo());
-            alumnoDTO.setCampus(alumno.getCampus());
-            alumnoDTO.setModalidad(alumno.getModalidad());
-            alumnoDTO.setCarrera(alumno.getCarrera());
-
-            dto = alumnoDTO;
-
-        } else if (usuario instanceof Profesor profesor) {
-            ProfesorDTO profesorDTO = new ProfesorDTO();
-
-            profesorDTO.setBonoCursos(profesor.getBonoCursos());
-            profesorDTO.setCursos(profesor.getCursos());
-            profesorDTO.setSueldo(profesor.getSueldo());
-            profesorDTO.setBono(profesor.getBono());
-            profesorDTO.setHoras(profesor.getHoras());
-            dto = profesorDTO;
-
-        } else if (usuario instanceof Administrador administrador) {
-            AdministradorDTO administradorDTO = new AdministradorDTO();
-
-            administradorDTO.setBonoGestion(
-                    administrador.getBonoGestion()
-            );
-            administradorDTO.setSueldo(administrador.getSueldo());
-            administradorDTO.setBono(administrador.getBono());
-            administradorDTO.setHoras(administrador.getHoras());
-            dto = administradorDTO;
-
-        } else {
-            dto = new UsuarioDTO();
-        }
-
-        // Datos comunes heredados de Usuario.
-        dto.setCodigo(usuario.getCodigo());
-        dto.setNombres(usuario.getNombres());
-        dto.setApellidos(usuario.getApellidos());
-        dto.setDni(usuario.getDni());
-        dto.setNumero(usuario.getNumero());
-        dto.setCorreo(usuario.getCorreo());
-        dto.setEstado(usuario.getEstado());
-        dto.setRol(usuario.getRol());
-        dto.setSexo(usuario.getSexo());
-        dto.setCumpleanos(usuario.getCumpleanos());
-
-        return dto;
-    }
-
+    
     public Set<UsuarioDTO> listarUsuarios() {
         return usuarioRepository.findAll()
                 .stream()
-                .map(this::convertirADTO)
+                .map(usuarioMapper::convertirADTO)
                 .collect(Collectors.toSet());
     }
 
@@ -132,7 +85,7 @@ public class UsuarioService {
         System.out.println(
                 "Es administrador: " + (usuario instanceof Administrador)
         );
-        return convertirADTO(usuario);
+        return usuarioMapper.convertirADTO(usuario);
     }
 
     public UserDetails loadUserByUsername(String codigo) {

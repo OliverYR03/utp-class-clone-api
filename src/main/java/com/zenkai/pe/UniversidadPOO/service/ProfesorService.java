@@ -3,11 +3,15 @@ package com.zenkai.pe.UniversidadPOO.service;
 import com.zenkai.pe.UniversidadPOO.Entity.Alumno;
 import com.zenkai.pe.UniversidadPOO.Entity.Profesor;
 import com.zenkai.pe.UniversidadPOO.Entity.Seccion;
+import com.zenkai.pe.UniversidadPOO.dto.ProfesorDTO;
+import com.zenkai.pe.UniversidadPOO.dto.UsuarioDTO;
 import com.zenkai.pe.UniversidadPOO.repository.IProfesorRepository;
+import com.zenkai.pe.UniversidadPOO.repository.IUsuarioRepository;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
@@ -17,175 +21,47 @@ import org.springframework.data.repository.query.FluentQuery;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ProfesorService implements IProfesorRepository {
+public class ProfesorService {
 
     @Autowired
     public IProfesorRepository iprofesorRepository;
 
-    @Override
+    @Autowired
+    public UsuarioMapper usuarioMapper;
+    
     public List<Profesor> findAll() {
         return iprofesorRepository.findAll();
     }
 
-    @Override
     public Set<Seccion> findSecciones(int idProfesor) {
         return iprofesorRepository.findSecciones(idProfesor);
     }
 
-    @Override
     public Optional<Profesor> findByCodigo(String codigo) {
         return iprofesorRepository.findByCodigo(codigo);
     }
 
-    @Override
     public Set<Alumno> findAlumnosBySeccion(int idSeccion, int idProfesor) {
         return iprofesorRepository.findAlumnosBySeccion(idSeccion, idProfesor)    ;
     }
+    
+    public List<UsuarioDTO> listarProfesores() {
+    return iprofesorRepository.findAll()
+            .stream()
+            .map(usuarioMapper::convertirADTO)
+            .toList();
+}
 
-    /*          ----------------------------------------             */
-    @Override
-    public void flush() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public <S extends Profesor> S saveAndFlush(S entity) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public <S extends Profesor> List<S> saveAllAndFlush(Iterable<S> entities) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
     public void deleteAllInBatch(Iterable<Profesor> entities) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    @Override
-    public void deleteAllByIdInBatch(Iterable<Long> ids) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void deleteAllInBatch() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public Profesor getOne(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public Profesor getById(Long id) {
+    public Profesor getById(Integer id) {
         return iprofesorRepository.getById(id);
     }
 
-    @Override
-    public Profesor getReferenceById(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public <S extends Profesor> List<S> findAll(Example<S> example) {
-        return null;
-    }
-
-    @Override
-    public <S extends Profesor> List<S> findAll(Example<S> example, Sort sort) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public <S extends Profesor> List<S> saveAll(Iterable<S> entities) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public List<Profesor> findAllById(Iterable<Long> ids) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
     public <S extends Profesor> S save(S entity) {
         return iprofesorRepository.save(entity);
-    }
-
-    @Override
-    public Optional<Profesor> findById(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public boolean existsById(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public long count() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void deleteById(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void delete(Profesor entity) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void deleteAllById(Iterable<? extends Long> ids) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void deleteAll(Iterable<? extends Profesor> entities) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void deleteAll() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public List<Profesor> findAll(Sort sort) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public Page<Profesor> findAll(Pageable pageable) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public <S extends Profesor> Optional<S> findOne(Example<S> example) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public <S extends Profesor> Page<S> findAll(Example<S> example, Pageable pageable) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public <S extends Profesor> long count(Example<S> example) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public <S extends Profesor> boolean exists(Example<S> example) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public <S extends Profesor, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }

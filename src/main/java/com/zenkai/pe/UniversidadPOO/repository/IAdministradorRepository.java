@@ -9,9 +9,6 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface IAdministradorRepository extends JpaRepository<Administrador, Integer> {
     
-   /*  @Query("""
-           SELECT a FROM usuarios INNER JOIN 
-           """)
-     Set<UsuarioDTO> findAllUsuarios();
-     */
+ 
+  
      }

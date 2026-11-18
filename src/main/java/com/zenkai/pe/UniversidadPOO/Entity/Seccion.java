@@ -28,8 +28,8 @@ public class Seccion {
     @JoinColumn(name="id_aula")
     private Aula aula;
     
-    @ManyToOne
-    @JoinColumn(name="id_profesor")
+    @ManyToOne(optional = true)
+    @JoinColumn(name = "id_profesor", nullable = true)
     private Profesor profesor;
 
     public Seccion(){}

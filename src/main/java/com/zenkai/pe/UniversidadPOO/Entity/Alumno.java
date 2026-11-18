@@ -15,7 +15,7 @@ import java.util.Date;
 @PrimaryKeyJoinColumn(name = "id_alumno")
 public class Alumno extends Usuario {
 
-    private int ciclo;
+    private Integer ciclo;
     private String campus;
 
     @Enumerated(EnumType.STRING)
@@ -25,9 +25,7 @@ public class Alumno extends Usuario {
     private CarreraAlumno carrera;
 
     public Alumno() {
-            }
-
-   
+    }
 
     public int getCiclo() {
         return ciclo;
@@ -53,5 +51,20 @@ public class Alumno extends Usuario {
         return carrera;
     }
 
-    
+    public void setCiclo(Integer ciclo) {
+        this.ciclo = ciclo;
+    }
+
+    public void setCampus(String campus) {
+        this.campus = campus;
+    }
+
+    public void setModalidad(ModalidadAlumno modalidad) {
+        this.modalidad = modalidad;
+    }
+
+    public void setCarrera(CarreraAlumno carrera) {
+        this.carrera = carrera;
+    }
+
 }

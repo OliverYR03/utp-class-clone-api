@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 public class EmpleadoDTO extends UsuarioDTO{
 
     private BigDecimal sueldo;
-    private int horas;
+    private Integer horas;
     private BigDecimal bono;
 
     public BigDecimal getSueldo() {
@@ -20,11 +20,11 @@ public class EmpleadoDTO extends UsuarioDTO{
         this.sueldo = sueldo;
     }
 
-    public int getHoras() {
+    public Integer getHoras() {
         return horas;
     }
 
-    public void setHoras(int horas) {
+    public void setHoras(Integer horas) {
         this.horas = horas;
     }
 

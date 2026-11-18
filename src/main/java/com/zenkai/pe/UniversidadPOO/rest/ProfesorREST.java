@@ -69,7 +69,7 @@ public class ProfesorREST {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Profesor> getAlumnoById(@PathVariable("id") Long id) {
+    public ResponseEntity<Profesor> getAlumnoById(@PathVariable("id") Integer id) {
         return ResponseEntity.ok(profesorService.getById(id));
     }
 

@@ -2,7 +2,6 @@ package com.zenkai.pe.UniversidadPOO.repository;
 
 import com.zenkai.pe.UniversidadPOO.Entity.Alumno;
 import com.zenkai.pe.UniversidadPOO.Entity.Matricula;
-import com.zenkai.pe.UniversidadPOO.Entity.Seccion;
 import com.zenkai.pe.UniversidadPOO.enums.EstadoMatricula;
 import java.util.List;
 import java.util.Optional;

@@ -166,6 +166,10 @@ public abstract class Usuario {
         return rol;
     }
 
+    public void setRol(RolUsuario rol) {
+        this.rol = rol;
+    }
+
     public String getPasswordHash() {
         return passwordHash;
     }
