@@ -206,7 +206,8 @@ public class AdministradorService {
         profesor.setSueldo(datos.getSueldo());
         profesor.setBono(datos.getBono());
         profesor.setHoras(datos.getHoras());
-        profesor.setBonoCursos(datos.getBonoCursos());
+        Double bonoCursos = datos.getBonoCursos();
+        profesor.setBonoCursos(bonoCursos != null ? bonoCursos : 30.0);
 
         return iprofesorRepository.save(profesor);
     }

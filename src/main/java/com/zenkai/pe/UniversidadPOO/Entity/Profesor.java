@@ -18,7 +18,7 @@ import java.util.List;
 public class Profesor extends Empleado {
    
     @Column(name="bonoCursos")
-    private double bonoCursos;
+    private Double bonoCursos;
     @ManyToMany(mappedBy = "profesor")
     @JsonIgnore
     @JsonBackReference
@@ -29,7 +29,7 @@ public class Profesor extends Empleado {
 
     public Profesor(double bonoCursos, List<Curso> cursos, BigDecimal sueldo, int horas, BigDecimal bono, int id_usuario, String codigo, String nombres, String apellidos, String dni, String numero, String correo, RolUsuario rol, String contrasena, char sexo, Date cumpleanos) {
         super(sueldo, horas, bono, id_usuario, codigo, nombres, apellidos, dni, numero, correo, RolUsuario.PROFESOR, contrasena, sexo, cumpleanos);
-        this.bonoCursos = 30;
+        this.bonoCursos = 30.0;
         this.cursos = cursos;
     }
 
@@ -49,11 +49,11 @@ public class Profesor extends Empleado {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public double getBonoCursos() {
+    public Double getBonoCursos() {
         return bonoCursos;
     }
 
-    public void setBonoCursos(double bonoCursos) {
+    public void setBonoCursos(Double bonoCursos) {
         this.bonoCursos = bonoCursos;
     }
 
